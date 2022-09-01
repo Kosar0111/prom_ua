@@ -1,0 +1,26 @@
+.footer-down {
+  display: flex;
+  justify-content: center;
+  background-color: blueviolet;
+  align-items: center;
+  height: 60px;
+}
+.footer-down__text {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25em;
+  margin-right: 30px;
+}
+.footer-down__btn {
+  height: 40px;
+  width: 7%;
+  background-color: rgb(247, 208, 12);
+  margin: 5px 0 5px 20px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.footer-down__btn:hover {
+  text-decoration: underline;
+}

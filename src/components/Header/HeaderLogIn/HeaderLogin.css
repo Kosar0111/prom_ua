@@ -1,0 +1,44 @@
+.header-login {
+  display: flex;
+  align-items: center;
+  width: 85vw;
+  margin: 0 auto;
+}
+.language {
+  display: flex;
+}
+.help {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+  flex-grow: 1;
+}
+.help__emoji {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ua,
+.rus {
+  margin: 0 5px;
+}
+.emoji {
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+}
+.launguage__text {
+  margin-right: 20px;
+}
+.headder-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobile {
+  display: flex;
+}
+.mobile__text {
+  margin-right: 20px;
+}

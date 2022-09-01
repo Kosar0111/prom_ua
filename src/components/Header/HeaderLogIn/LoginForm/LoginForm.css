@@ -1,0 +1,20 @@
+.loginform__main {
+  display: flex;
+}
+.loginform__login {
+  cursor: pointer;
+}
+.loginform__login:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.loginform__registration {
+  cursor: pointer;
+}
+.loginform__registration:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.pipe {
+  margin: 0 10px;
+}

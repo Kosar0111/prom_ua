@@ -1,0 +1,7 @@
+.content__main {
+  display: flex;
+  width: 85vw;
+  height: 400px;
+  margin: 20px auto;
+  justify-content: center;
+}

@@ -1,0 +1,41 @@
+.img-all {
+  display: flex;
+  background-color: rgb(246, 243, 243);
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.img-pay {
+  display: flex;
+}
+.img-pay__item {
+  width: 120px;
+  height: 50px;
+  margin-right: 20px;
+}
+.theme__dark {
+  display: flex;
+  align-items: center;
+}
+.sun {
+  display: block;
+  height: 35px;
+  width: 35px;
+  margin-right: 10px;
+}
+.swich__on {
+  display: block;
+}
+.social {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.youtube,
+.facebook,
+.insta {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  border-radius: 50%;
+  text-align: center;
+}

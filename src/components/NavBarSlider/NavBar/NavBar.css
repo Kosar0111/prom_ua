@@ -1,0 +1,47 @@
+.navbar__all {
+  margin-right: 20px;
+  overflow: scroll;
+  width: 20%;
+}
+.navbar-link__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 10px 20px 0;
+}
+.navbar-link__item a {
+  color: #000;
+  text-decoration: none;
+}
+.navbar-link__blue {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 10px 20px 0;
+}
+.navbar-link__blue a {
+  text-decoration: none;
+  color: blue;
+}
+.navbar-link__blue-notebook,
+.navbar-link__blue-emoji {
+  margin: 20px 10px 20px 0;
+}
+.navbar-link__blue-notebook a {
+  text-decoration: none;
+}
+.navbar-link__blue-emoji a {
+  text-decoration: none;
+  color: blue;
+}
+.notebook {
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.arrow__bar {
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+}
