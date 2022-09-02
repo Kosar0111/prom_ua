@@ -70,6 +70,7 @@
     ]
   },
   "devDependencies": {
+    "@types/uuid": "^8.3.4",
     "prettier": "^2.7.1"
   },
   "lint-staged": {

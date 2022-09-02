@@ -3,9 +3,9 @@ import { ToastContainer } from 'react-toastify'
 //import 'react-toastify/dist/ReactTostify.css'
 
 import './App.css'
-import HomePage from './pages/HomePages/HomePage'
+import { HomePage } from './components/pages/HomePages/HomePage'
 
-const App = () => {
+export const App = () => {
   return (
     <>
       <Routes>
@@ -17,5 +17,3 @@ const App = () => {
     </>
   )
 }
-
-export default App
