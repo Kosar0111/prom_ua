@@ -1,7 +1,8 @@
 import './Registration.css'
 import { createPortal } from 'react-dom'
-
 import { useFormik, FormikProps } from 'formik'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
 
@@ -29,14 +30,16 @@ type FormModel = {
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
 const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
+  const notify = () => toast('You registered successfully!')
+
   const dispatch = useAppDispatch()
   const { loading, error } = useAppSelector(state => state.auth)
-  console.log(error)
 
   const onSubmit = (values: FormModel) => {
     dispatch(registrUser(values))
     formik.resetForm()
     setRegistrationOpen(!registrationOpen)
+    notify()
   }
 
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -54,6 +57,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   if (registrationOpen) {
     return createPortal(
       <>
+        <ToastContainer />
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
         <div className="registration__modal" onClick={e => e.stopPropagation()}>
           <form className="registration__modal-wraper" onSubmit={formik.handleSubmit}>

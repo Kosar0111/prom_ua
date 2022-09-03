@@ -48,13 +48,13 @@ export const registrUser = createAsyncThunk<IUser, ActionPayload>(
   'users/registr',
   async (value, thunkAPI) => {
     try {
-      const response = await axios.post('http://localhost:3001/posts', {
+      const response = await axios.post('http://localhost:3001/users', {
         token: token,
         name: value.name.trim(),
-        lastName: value.name.trim(),
-        email: value.name.trim(),
-        password: value.name.trim(),
-        phone: value.name
+        lastName: value.lastName.trim(),
+        email: value.email.trim(),
+        password: value.password.trim(),
+        phone: value.phone
       })
       return response.data
     } catch (error) {
@@ -72,19 +72,33 @@ const authSlice = createSlice({
       state.users.push({
         token: token,
         name: action.payload.name.trim(),
-        lastName: action.payload.name.trim(),
-        email: action.payload.name.trim(),
-        password: action.payload.name.trim(),
-        phone: action.payload.name
+        lastName: action.payload.lastName.trim(),
+        email: action.payload.email.trim(),
+        password: action.payload.password.trim(),
+        phone: action.payload.phone
       })
     }
   },
   extraReducers: builder => {
+    builder.addCase(getUsers.pending, state => {
+      state.loading = true
+      state.error = false
+    })
+    builder.addCase(getUsers.fulfilled, (state, action: PayloadAction<IUser[]>) => {
+      state.loading = false
+      state.users = action.payload
+      state.error = false
+    })
+    builder.addCase(getUsers.rejected, state => {
+      state.loading = false
+      state.error = true
+      state.message = 'Somthing went wrong'
+    })
+
     builder.addCase(registrUser.pending, state => {
       state.loading = true
     })
     builder.addCase(registrUser.fulfilled, (state, action: PayloadAction<IUser>) => {
-      console.log(state)
       state.loading = false
       state.success = true
       authSlice.caseReducers.register(state, action)

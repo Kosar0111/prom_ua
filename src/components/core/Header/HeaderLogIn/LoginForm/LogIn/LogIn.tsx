@@ -1,7 +1,8 @@
 import './Login.css'
 import { createPortal } from 'react-dom'
-
 import { useFormik, FormikProps } from 'formik'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { validationSchema } from '../../../../../../helpers/validationLogin'
 
@@ -24,12 +25,15 @@ const modalLogin: any = document.getElementById('modalLogin')
 
 // eslint-disable-next-line react/prop-types
 export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
+  const notify = () => toast('Your authorization successfully!')
+
   const dispatch = useAppDispatch()
   const { loading, error } = useAppSelector(state => state.auth)
   const onSubmit = (values: FormModel) => {
     dispatch(getUsers())
     formik.resetForm()
     setLoginOpen(!loginOpen)
+    notify()
   }
 
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -43,6 +47,7 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
   if (loginOpen) {
     return createPortal(
       <>
+        <ToastContainer />
         <div className="login" onClick={() => setLoginOpen(!loginOpen)}></div>
         <div className="login__modal" onClick={e => e.stopPropagation()}>
           <form className="login__modal-wraper" onSubmit={formik.handleSubmit}>
