@@ -1,0 +1,21 @@
+.chat {
+  background-color: rgb(97, 14, 174);
+  border-radius: 20px;
+  font-weight: 800;
+  z-index: 10;
+  width: 90px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+}
+.message {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  color: white;
+}

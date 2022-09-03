@@ -1,0 +1,33 @@
+.create__store {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid grey;
+  width: 20%;
+  height: 100%;
+  border-radius: 7px;
+}
+.create__store-text {
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  font-weight: 800;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+.create__store-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid blueviolet;
+  color: blueviolet;
+  font-weight: 500;
+  height: 10%;
+  width: 90%;
+  border-radius: 10px;
+}
+.create__store-btn a {
+  text-align: center;
+}
