@@ -30,7 +30,8 @@ type FormModel = {
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
 const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
-  const notify = () => toast('You registered successfully!')
+  const notify = () => toast.success('You registered successfully!')
+  console.log()
 
   const dispatch = useAppDispatch()
   const { loading, error } = useAppSelector(state => state.auth)
