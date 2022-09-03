@@ -6,7 +6,7 @@ import arrowDown from '../../../assets/img/arrow-down.png'
 import basket from '../../../assets/img/basket.png'
 import heart from '../../../assets/img/heart.png'
 
-export const HeaderSaerch = () => {
+export const HeaderSearch = () => {
   return (
     <div className="search__wraper">
       <div className="search">

@@ -5,13 +5,13 @@ import { useFormik, FormikProps } from 'formik'
 
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
 
-//import load from '../../../../../img/.gif'
+import { registrUser } from '../../../../../../store/authSlice'
 
-/*import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
 
-import { register, reset } from '../../../../../auth/authSlice'*/
+import load from '../../../../../../assets/img/loading.gif'
+
+//import { toast } from 'react-toastify'
 
 interface IRegistrationProps {
   registrationOpen: boolean
@@ -23,15 +23,20 @@ type FormModel = {
   lastName: string
   email: string
   password: string
-  phone: number
+  phone: string
 }
 
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
 const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
+  const dispatch = useAppDispatch()
+  const { loading, error } = useAppSelector(state => state.auth)
+  console.log(error)
+
   const onSubmit = (values: FormModel) => {
-    //dispatch(addPost(values))
+    dispatch(registrUser(values))
     formik.resetForm()
+    setRegistrationOpen(!registrationOpen)
   }
 
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -40,7 +45,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
       lastName: '',
       email: '',
       password: '',
-      phone: 0
+      phone: ''
     },
     onSubmit,
     validationSchema
@@ -51,7 +56,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
       <>
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
         <div className="registration__modal" onClick={e => e.stopPropagation()}>
-          <form className="registration__modal-wraper">
+          <form className="registration__modal-wraper" onSubmit={formik.handleSubmit}>
             <div
               className="registration__modal-close"
               onClick={() => setRegistrationOpen(!registrationOpen)}
@@ -120,6 +125,8 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
               </button>
             </div>
           </form>
+          {error && <h2 className="error-api">An error occured: {error}</h2>}
+          {loading ? <img className="load" src={load} alt="loading" /> : ''}
         </div>
       </>,
       modalRegistration

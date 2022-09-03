@@ -4,6 +4,12 @@ import { createPortal } from 'react-dom'
 import { useFormik, FormikProps } from 'formik'
 
 import { validationSchema } from '../../../../../../helpers/validationLogin'
+
+import { getUsers } from '../../../../../../store/authSlice'
+
+import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
+
+import load from '../../../../../../assets/img/loading.gif'
 interface ILogInProps {
   loginOpen: boolean
   setLoginOpen: (loginOpen: boolean) => void
@@ -18,9 +24,12 @@ const modalLogin: any = document.getElementById('modalLogin')
 
 // eslint-disable-next-line react/prop-types
 export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
+  const dispatch = useAppDispatch()
+  const { loading, error } = useAppSelector(state => state.auth)
   const onSubmit = (values: FormModel) => {
-    //dispatch(addPost(values))
+    dispatch(getUsers())
     formik.resetForm()
+    setLoginOpen(!loginOpen)
   }
 
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -36,7 +45,7 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
       <>
         <div className="login" onClick={() => setLoginOpen(!loginOpen)}></div>
         <div className="login__modal" onClick={e => e.stopPropagation()}>
-          <form className="login__modal-wraper">
+          <form className="login__modal-wraper" onSubmit={formik.handleSubmit}>
             <div className="login__modal-close" onClick={() => setLoginOpen(!loginOpen)}>
               X
             </div>
@@ -73,6 +82,8 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
               </button>
             </div>
           </form>
+          {error && <h2 className="error-api">An error occured: {error}</h2>}
+          {loading ? <img className="load" src={load} alt="loading" /> : ''}
         </div>
       </>,
       modalLogin

@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit' //PayloadAction
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid'
 
 import { IUser } from '../model/interfaceUser'
 
@@ -23,10 +22,18 @@ const initialState: IUserSlice = {
 }
 
 type ActionPayload = Record<string, string>
+const token = 'grgrggergregergergegggereggvvvsvsvfvrv'
 
 export const getUsers = createAsyncThunk('users/getUsers', async (_, thunkAPI) => {
   try {
-    const response = await axios.get<IUser[]>('http://localhost:3001/users')
+    const response = await axios.get<IUser[]>('http://localhost:3001/users', {
+      headers: {
+        'content-type': 'applcation/json',
+        accept: 'aplication/json',
+        Authorization: 'Bearer grgrggergregergergegggereggvvvsvsvfvrv'
+      },
+      withCredentials: true
+    })
     return response.data
   } catch (error: any) {
     const message =
@@ -37,15 +44,17 @@ export const getUsers = createAsyncThunk('users/getUsers', async (_, thunkAPI) =
   }
 })
 
-export const registr = createAsyncThunk<IUser, ActionPayload>(
-  'posts/addPosts',
+export const registrUser = createAsyncThunk<IUser, ActionPayload>(
+  'users/registr',
   async (value, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:3001/posts', {
-        token: 'grgrggergregergergegggereggvvvsvsvfvrv',
-        author: value.author.trim(),
-        description: value.description.trim(),
-        time: new Date().toLocaleString()
+        token: token,
+        name: value.name.trim(),
+        lastName: value.name.trim(),
+        email: value.name.trim(),
+        password: value.name.trim(),
+        phone: value.name
       })
       return response.data
     } catch (error) {
@@ -58,8 +67,10 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     register: (state, action) => {
+      console.log(state)
+
       state.users.push({
-        token: uuidv4(),
+        token: token,
         name: action.payload.name.trim(),
         lastName: action.payload.name.trim(),
         email: action.payload.name.trim(),
@@ -67,22 +78,23 @@ const authSlice = createSlice({
         phone: action.payload.name
       })
     }
-  }
-  /*extraReducers: builder => {
-    //builder.addCase(register.pending, state => {
+  },
+  extraReducers: builder => {
+    builder.addCase(registrUser.pending, state => {
       state.loading = true
     })
-    builder.addCase(register.fulfilled, (state, action) => {
+    builder.addCase(registrUser.fulfilled, (state, action: PayloadAction<IUser>) => {
+      console.log(state)
       state.loading = false
       state.success = true
-      state.users = action.payload
+      authSlice.caseReducers.register(state, action)
     })
-    builder.addCase(register.rejected, (state, action) => {
+    builder.addCase(registrUser.rejected, state => {
       state.loading = false
       state.error = true
-      state.message = action.payload
+      state.message = "You can't register"
     })
-  }*/
+  }
 })
 
 export const { register } = authSlice.actions

@@ -71,3 +71,14 @@
 }
 .login__modal-h1 {
 }
+.error-api {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+.loading {
+  display: flex;
+  margin: 0 auto;
+  height: 20%;
+  width: 20%;
+}
