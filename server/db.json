@@ -1,31 +1,3 @@
 {
-  "users": [
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин Локтев",
-      "lastName": "Константин Локтев",
-      "email": "Константин Локтев",
-      "password": "Константин Локтев",
-      "phone": "Константин Локтев",
-      "id": 1
-    },
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин",
-      "lastName": "Локтев",
-      "email": "kosar0111@gmail.com",
-      "password": "112112111",
-      "phone": "0637209239",
-      "id": 2
-    },
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин Локтев",
-      "lastName": "Локтев",
-      "email": "kosar0111@gmail.com",
-      "password": "66666666",
-      "phone": "0637209239",
-      "id": 3
-    }
-  ]
+  "users": []
 }

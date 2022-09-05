@@ -17,5 +17,5 @@ export const validationSchema = yup.object({
     .min(6, 'Must be 3 characters at least')
     .max(20, 'Too long password')
     .required('Pasword is required field!'),
-  phone: yup.number().min(10, 'Must be 10 figers at least').required('Phone is required field!')
+  phone: yup.string().min(10, 'Must be 10 figers at least').required('Phone is required field!')
 })

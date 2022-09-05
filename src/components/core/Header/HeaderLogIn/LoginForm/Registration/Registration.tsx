@@ -9,11 +9,6 @@ import { validationSchema } from '../../../../../../helpers/validationRegistrati
 import { registrUser } from '../../../../../../store/authSlice'
 
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
-
-import load from '../../../../../../assets/img/loading.gif'
-
-//import { toast } from 'react-toastify'
-
 interface IRegistrationProps {
   registrationOpen: boolean
   setRegistrationOpen: (registrationOpen: boolean) => void
@@ -30,10 +25,10 @@ type FormModel = {
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
 const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
-  const notify = () => toast('You registered successfully!')
+  const notify = () => toast.success('You registered successfully!')
 
   const dispatch = useAppDispatch()
-  const { loading, error } = useAppSelector(state => state.auth)
+  const { register } = useAppSelector(state => state.auth)
 
   const onSubmit = (values: FormModel) => {
     dispatch(registrUser(values))
@@ -57,7 +52,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   if (registrationOpen) {
     return createPortal(
       <>
-        <ToastContainer />
+        {register && <ToastContainer />}
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
         <div className="registration__modal" onClick={e => e.stopPropagation()}>
           <form className="registration__modal-wraper" onSubmit={formik.handleSubmit}>
@@ -124,13 +119,11 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
                 onChange={formik.handleChange}
               />
               {formik.errors.phone && <div className="error">{formik.errors.phone}</div>}
-              <button className="registration__modal-btn" disabled={!formik.isValid}>
+              <button type="submit" className="registration__modal-btn" disabled={!formik.isValid}>
                 Зареєструватися
               </button>
             </div>
           </form>
-          {error && <h2 className="error-api">An error occured: {error}</h2>}
-          {loading ? <img className="load" src={load} alt="loading" /> : ''}
         </div>
       </>,
       modalRegistration
