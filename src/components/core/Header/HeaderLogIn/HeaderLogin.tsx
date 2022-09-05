@@ -1,9 +1,14 @@
 import emoji from '../../../../assets/img/emoji.png'
 
+import { useAppSelector } from '../../../../hooks/hooks'
+
+import UserCabinet from '../../UserCabinet/UserCabinet'
+
 import { LoginForm } from './LoginForm/LoginForm'
 import './HeaderLogin.css'
 
 export const HeaderLogin = () => {
+  const { auth, register } = useAppSelector(state => state.auth)
   return (
     <div className="header-login">
       <div className="language">
@@ -20,7 +25,7 @@ export const HeaderLogin = () => {
           <p className="mobile__text"> Почати продавати на prom.ua</p>
         </div>
       </div>
-      <LoginForm />
+      {auth || register ? <UserCabinet /> : <LoginForm />}
     </div>
   )
 }

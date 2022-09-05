@@ -54,7 +54,7 @@ export const registrUser = createAsyncThunk<IUser, ActionPayload>('users/registr
   const tok = res[0].token
   document.cookie = `name=${tok}`
 
-  if (!res.length) {
+  if (res.length > 0) {
     const resp = await instance.post('http://localhost:3001/users', {
       token: uuidv4(),
       id: uuidv4(),
