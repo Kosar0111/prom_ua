@@ -1,49 +1,13 @@
 {
   "users": [
     {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин Локтев",
-      "lastName": "Константин Локтев",
-      "email": "Константин Локтев",
-      "password": "Константин Локтев",
-      "phone": "Константин Локтев",
-      "id": 1
-    },
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин",
-      "lastName": "Локтев",
-      "email": "kosar0111@gmail.com",
-      "password": "112112111",
-      "phone": "0637209239",
-      "id": 2
-    },
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
+      "token": "076cb400-b544-41eb-8db3-0b33a2823a38",
+      "id": "88b3ab1d-1c98-4dd2-8f7d-118309eacc17",
       "name": "Константин Локтев",
       "lastName": "Локтев",
       "email": "kosar0111@gmail.com",
-      "password": "66666666",
-      "phone": "0637209239",
-      "id": 3
-    },
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин Локтев",
-      "lastName": "Локтев",
-      "email": "kosar0111@gmail.com",
-      "password": "121222212",
-      "phone": "0637209239",
-      "id": 4
-    },
-    {
-      "token": "grgrggergregergergegggereggvvvsvsvfvrv",
-      "name": "Константин Локтев",
-      "lastName": "Локтев",
-      "email": "kosar0111@gmail.com",
-      "password": "cdcdcdcdcd",
-      "phone": "0637209239",
-      "id": 5
+      "password": "111111",
+      "phone": "0637209239"
     }
   ]
 }

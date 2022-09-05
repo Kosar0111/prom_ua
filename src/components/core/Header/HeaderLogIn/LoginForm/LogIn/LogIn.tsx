@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { validationSchema } from '../../../../../../helpers/validationLogin'
 
-import { getUsers } from '../../../../../../store/authSlice'
+import { logIn } from '../../../../../../store/authSlice'
 
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
 
@@ -26,14 +26,12 @@ const modalLogin: any = document.getElementById('modalLogin')
 // eslint-disable-next-line react/prop-types
 export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
   const notify = () => toast('Your authorization successfully!')
-
   const dispatch = useAppDispatch()
-  const { loading, error } = useAppSelector(state => state.auth)
+  const { loading, authError, auth, authMessage } = useAppSelector(state => state.auth)
   const onSubmit = (values: FormModel) => {
-    dispatch(getUsers())
+    dispatch(logIn(values))
     formik.resetForm()
     setLoginOpen(!loginOpen)
-    notify()
   }
 
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -78,17 +76,14 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
                 onChange={formik.handleChange}
               />
               {formik.errors.password && <div className="error">{formik.errors.password}</div>}
-              <button
-                className="login__modal-btn"
-                onClick={() => setLoginOpen(!loginOpen)}
-                disabled={!formik.isValid}
-              >
+              <button className="login__modal-btn" type="submit" disabled={!formik.isValid}>
                 Увійти
               </button>
             </div>
           </form>
-          {error && <h2 className="error-api">An error occured: {error}</h2>}
-          {loading ? <img className="load" src={load} alt="loading" /> : ''}
+          {authError && <h2 className="error-api">An error occured: {authMessage}</h2>}
+          {loading && <img className="load" src={load} alt="loading" />}
+          {auth && notify()}
         </div>
       </>,
       modalLogin
