@@ -1,3 +1,13 @@
 {
-  "users": []
+  "users": [
+    {
+      "token": "b6ab37d9-b0a3-45f6-9ba6-75b719fdaeba",
+      "id": "5206b6b8-8f26-4844-83e7-18d760491dad",
+      "name": "Константин",
+      "lastName": "Локтев",
+      "email": "kosar0111@gmail.com",
+      "password": "111111",
+      "phone": "0637209239"
+    }
+  ]
 }

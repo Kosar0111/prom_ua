@@ -13,7 +13,7 @@ interface IUserSlice {
   regError: boolean
   authError: boolean
   register: boolean
-  auth: boolean
+  isAuth: boolean
   regMessage: string
   authMessage: string
 }
@@ -24,7 +24,7 @@ const initialState: IUserSlice = {
   regError: false,
   authError: false,
   register: false,
-  auth: false,
+  isAuth: false,
   regMessage: '',
   authMessage: '',
   users: []
@@ -39,22 +39,19 @@ type FormModel = {
 
 export const logIn = createAsyncThunk('users/getUsers', async (client: FormModel) => {
   const response = await instance.get<IUser[]>('http://localhost:3001/users')
-  const res = response.data.filter(
+  const auth = response.data.filter(
     user => user.email === client.email && user.password === client.password
   )
-  const tok = res[0].token
-  document.cookie = `name=${tok}`
+  if (auth.length > 0) return auth
 
-  return res
+  throw new Error(' You entered incorreced data')
 })
 
 export const registrUser = createAsyncThunk<IUser, ActionPayload>('users/registr', async value => {
   const response = await instance.get<IUser[]>('http://localhost:3001/users')
   const res = response.data.filter(user => user.email === value.email)
-  const tok = res[0].token
-  document.cookie = `name=${tok}`
 
-  if (res.length > 0) {
+  if (res.length === 0) {
     const resp = await instance.post('http://localhost:3001/users', {
       token: uuidv4(),
       id: uuidv4(),
@@ -64,11 +61,14 @@ export const registrUser = createAsyncThunk<IUser, ActionPayload>('users/registr
       password: value.password.trim(),
       phone: value.phone
     })
-    document.cookie = `name=${resp.data.token}`
     return resp.data
   }
-
-  return new Error('hhghh')
+  throw new Error('Such user has already exist')
+})
+export const isAuth = createAsyncThunk('isAuth/getUsers', async (cookie: string) => {
+  const response = await instance.get<IUser[]>('http://localhost:3001/users')
+  const userIsAuth = response.data.filter(el => el.token === cookie)
+  return userIsAuth
 })
 const authSlice = createSlice({
   name: 'auth',
@@ -89,20 +89,22 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(logIn.pending, state => {
       state.loading = true
-      state.auth = false
+      state.isAuth = false
       state.authError = false
       state.authMessage = ''
     })
     builder.addCase(logIn.fulfilled, (state, action: PayloadAction<IUser[]>) => {
       state.loading = false
       state.users = action.payload
-      state.auth = true
+      const token = action.payload.map(el => el.token)
+      document.cookie = `name=${token}`
+      state.isAuth = true
       state.authError = false
       state.authMessage = ''
     })
     builder.addCase(logIn.rejected, state => {
       state.loading = false
-      state.auth = false
+      state.isAuth = false
       state.authError = true
       state.authMessage = 'Somthing went wrong'
     })
@@ -119,15 +121,27 @@ const authSlice = createSlice({
       state.regError = false
       state.regMessage = ''
       authSlice.caseReducers.register(state, action)
+      document.cookie = `name=${action.payload.token}`
     })
     builder.addCase(registrUser.rejected, state => {
       state.loading = false
       state.regError = true
       state.register = false
-      state.regMessage = 'You cant register'
+      state.regMessage = 'You cant register, such email has already exists'
+    })
+
+    builder.addCase(isAuth.pending, state => {
+      state.loading = true
+    })
+    builder.addCase(isAuth.fulfilled, (state, action: PayloadAction<IUser[]>) => {
+      state.isAuth = true
+
+      state.users = action.payload
+    })
+    builder.addCase(isAuth.rejected, state => {
+      state.loading = false
     })
   }
 })
-
 export const { register } = authSlice.actions
 export default authSlice.reducer

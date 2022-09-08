@@ -8,7 +8,7 @@ import { LoginForm } from './LoginForm/LoginForm'
 import './HeaderLogin.css'
 
 export const HeaderLogin = () => {
-  const { auth, register } = useAppSelector(state => state.auth)
+  const { isAuth, register } = useAppSelector(state => state.auth)
   return (
     <div className="header-login">
       <div className="language">
@@ -25,7 +25,7 @@ export const HeaderLogin = () => {
           <p className="mobile__text"> Почати продавати на prom.ua</p>
         </div>
       </div>
-      {auth || register ? <UserCabinet /> : <LoginForm />}
+      {isAuth || register ? <UserCabinet /> : <LoginForm />}
     </div>
   )
 }

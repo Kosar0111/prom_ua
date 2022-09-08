@@ -9,6 +9,7 @@ import { validationSchema } from '../../../../../../helpers/validationRegistrati
 import { registrUser } from '../../../../../../store/authSlice'
 
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
+import load from '../../../../../../assets/img/loading.gif'
 interface IRegistrationProps {
   registrationOpen: boolean
   setRegistrationOpen: (registrationOpen: boolean) => void
@@ -28,7 +29,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   const notify = () => toast.success('You registered successfully!')
 
   const dispatch = useAppDispatch()
-  const { register } = useAppSelector(state => state.auth)
+  const { register, regMessage, regError, loading } = useAppSelector(state => state.auth)
 
   const onSubmit = (values: FormModel) => {
     dispatch(registrUser(values))
@@ -124,6 +125,9 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
               </button>
             </div>
           </form>
+          {regError && <h2 className="error-api">An error occured: {regMessage}</h2>}
+          {loading && <img className="load" src={load} alt="loading" />}
+          {register && notify()}
         </div>
       </>,
       modalRegistration
