@@ -24,7 +24,7 @@ export const CabinetCompany: React.FC = () => {
         </div>
         <div className="cabinet__link-personal">
           <img src={arrowRight} alt="arrow__right" className="arrow__right" />
-          <span>Перейти в щсщбистий кабінет</span>
+          <span>Перейти в особистий кабінет</span>
         </div>
       </div>
     </div>

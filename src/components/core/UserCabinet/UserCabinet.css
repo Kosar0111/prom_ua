@@ -1,10 +1,67 @@
 .user-about {
   display: flex;
   align-items: center;
+  position: relative;
+  cursor: pointer;
 }
-.name,
-.last-name,
-.phone,
+.user-about:hover {
+  text-decoration: underline;
+}
+.user-about-cabinet,
 .user-img {
   margin: auto 5px;
+}
+.user-about-cabinet {
+  margin-bottom: 0px;
+}
+.user-about-hidden {
+  display: none;
+  margin-top: 10px;
+  height: 150px;
+  width: 200px;
+  position: absolute;
+  top: 25px;
+  right: -10px;
+  padding-bottom: 20px;
+}
+.user-about-active {
+  margin-top: 10px;
+  opacity: 1;
+  z-index: 4;
+  height: 150px;
+  width: 200px;
+  position: absolute;
+  top: 22px;
+  right: -10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.user-about-name {
+  margin: 15px 10px;
+}
+.user-about-salesman,
+.user-about-byer {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin: 15px 10px;
+  cursor: pointer;
+}
+.user-about-name {
+  font-weight: bold;
+  cursor: none;
+}
+.btn-logout {
+  border: none;
+  width: 100%;
+  height: 35px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+.btn-logout:hover,
+.user-about-salesman:hover,
+.user-about-byer:hover {
+  text-decoration: underline;
 }

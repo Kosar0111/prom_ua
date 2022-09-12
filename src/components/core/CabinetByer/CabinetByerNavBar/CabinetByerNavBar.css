@@ -1,0 +1,21 @@
+.navbar-list {
+  margin-top: 30px;
+  position: sticky;
+  width: 20vw;
+}
+.navbar-list__item,
+.navbar-list__item:active,
+.navbar-list__item:visited {
+  display: block;
+  margin: 20px auto;
+  text-decoration: none;
+  color: black;
+}
+.navbar-list__item:hover {
+  text-decoration: underline;
+  color: black;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
