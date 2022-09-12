@@ -1,0 +1,15 @@
+.cabinet-byer {
+  margin-top: 10px;
+  width: 100vw;
+  background-color: rgb(246, 243, 243);
+}
+.cabinet-byer-wraper {
+  display: flex;
+  width: 85vw;
+  margin: auto;
+  position: relative;
+}
+.cabinet-byer-navbar {
+  position: sticky;
+  height: 100%;
+}

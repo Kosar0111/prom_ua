@@ -1,0 +1,9 @@
+.empty-page {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  margin: auto;
+}
+.empty-page-h1 {
+  margin: auto;
+}
