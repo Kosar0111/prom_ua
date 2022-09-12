@@ -1,17 +1,29 @@
 import React from 'react'
 
-import { useAppSelector } from '../../../hooks/hooks'
+import { logOut } from '../../../store/authSlice'
+
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import userCabinet from '../../../assets/img/user.png'
 import './UserCabinet.css'
 
 const UserCabinet: React.FC = () => {
+  const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.auth.users)
-  //const { name, lastName, pohne } = { ...user }
-  console.log(user)
+  const out = () => {
+    dispatch(logOut())
+  }
+
+  const { name, lastName, phone } = user
 
   return (
-    <div>
-      <img src={userCabinet} alt="user" className="user-cabinet" />
+    <div className="user-about">
+      <div className="name">{name}</div>
+      <div className="last-name">{lastName}</div>
+      <div className="phone">{phone}</div>
+      <img src={userCabinet} alt="user" className="user-img" />
+      <button className="btn-logout" onClick={out}>
+        Logout
+      </button>
     </div>
   )
 }

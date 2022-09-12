@@ -29,7 +29,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   const notify = () => toast.success('You registered successfully!')
 
   const dispatch = useAppDispatch()
-  const { register, regMessage, regError, loading } = useAppSelector(state => state.auth)
+  const { register, message, regError, loading } = useAppSelector(state => state.auth)
 
   const onSubmit = (values: FormModel) => {
     dispatch(registrUser(values))
@@ -125,7 +125,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
               </button>
             </div>
           </form>
-          {regError && <h2 className="error-api">An error occured: {regMessage}</h2>}
+          {regError && <h2 className="error-api">An error occured: {message}</h2>}
           {loading && <img className="load" src={load} alt="loading" />}
           {register && notify()}
         </div>

@@ -10,7 +10,7 @@ import { isAuth } from './store/authSlice'
 export const App = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    if (document.cookie !== '') {
+    if (document.cookie !== 'name=') {
       dispatch(isAuth(document.cookie))
     }
   }, [])
