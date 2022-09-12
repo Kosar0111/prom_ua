@@ -1,0 +1,10 @@
+.user-about {
+  display: flex;
+  align-items: center;
+}
+.name,
+.last-name,
+.phone,
+.user-img {
+  margin: auto 5px;
+}

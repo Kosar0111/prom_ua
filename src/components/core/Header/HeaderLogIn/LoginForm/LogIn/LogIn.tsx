@@ -25,9 +25,9 @@ const modalLogin: any = document.getElementById('modalLogin')
 
 // eslint-disable-next-line react/prop-types
 export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
-  const notify = () => toast('Your authorization successfully!')
+  const notify1 = () => toast('Your authorization successfully!')
   const dispatch = useAppDispatch()
-  const { loading, authError, auth, authMessage } = useAppSelector(state => state.auth)
+  const { loading, authError, isAuth, message } = useAppSelector(state => state.auth)
   const onSubmit = (values: FormModel) => {
     dispatch(logIn(values))
     formik.resetForm()
@@ -81,9 +81,9 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
               </button>
             </div>
           </form>
-          {authError && <h2 className="error-api">An error occured: {authMessage}</h2>}
+          {authError && <h2 className="error-api">An error occured: {message}</h2>}
           {loading && <img className="load" src={load} alt="loading" />}
-          {auth && notify()}
+          {isAuth && notify1()}
         </div>
       </>,
       modalLogin
