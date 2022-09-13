@@ -2,8 +2,10 @@ import './Login.css'
 import { createPortal } from 'react-dom'
 import { useFormik, FormikProps } from 'formik'
 import { ToastContainer, toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 import 'react-toastify/dist/ReactToastify.css'
 
+import '../../../../../../helpers/i18next'
 import { validationSchema } from '../../../../../../helpers/validationLogin'
 
 import { logIn } from '../../../../../../store/authSlice'
@@ -25,6 +27,7 @@ const modalLogin: any = document.getElementById('modalLogin')
 
 // eslint-disable-next-line react/prop-types
 export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
+  const { t } = useTranslation()
   const notify1 = () => toast('Your authorization successfully!')
   const dispatch = useAppDispatch()
   const { loading, authError, isAuth, message } = useAppSelector(state => state.auth)
@@ -52,7 +55,7 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
             <div className="login__modal-close" onClick={() => setLoginOpen(!loginOpen)}>
               X
             </div>
-            <h1 className="login__modal-h1">Увійти в кабінет</h1>
+            <h1 className="login__modal-h1">{t('login.ogin__modal-h1')}</h1>
             <div className="login__modal-content">
               <label className="login__modal-login">Ваш e-mail</label>
               <input
@@ -65,7 +68,7 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
                 onChange={formik.handleChange}
               />
               {formik.errors.email && <div className="error">{formik.errors.email}</div>}
-              <label className="login__modal-pass">Введіть ваш пароль</label>
+              <label className="login__modal-pass">{t('login.login__modal-pass')}</label>
               <input
                 type="password"
                 className="login__modal-pass-input"
@@ -77,11 +80,15 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
               />
               {formik.errors.password && <div className="error">{formik.errors.password}</div>}
               <button className="login__modal-btn" type="submit" disabled={!formik.isValid}>
-                Увійти
+                {t('login.login__modal-btn')}
               </button>
             </div>
           </form>
-          {authError && <h2 className="error-api">An error occured: {message}</h2>}
+          {authError && (
+            <h2 className="error-api">
+              {t('registration.error-api')} {message}
+            </h2>
+          )}
           {loading && <img className="load" src={load} alt="loading" />}
           {isAuth && notify1()}
         </div>

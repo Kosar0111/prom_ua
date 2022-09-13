@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { logOut } from '../../../store/authSlice'
 import userCabinet from '../../../assets/img/user.png'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 
+import '../../../helpers/i18next'
 import './UserCabinet.css'
 
 const UserCabinet: React.FC = () => {
+  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.auth.users)
   const out = () => {
@@ -24,7 +27,7 @@ const UserCabinet: React.FC = () => {
         onMouseEnter={() => setActive(!active)}
         onMouseLeave={() => setActive(!active)}
       >
-        Мій кабінет
+        {t('user-cabinet.user-about-cabinet')}
       </div>
       <div
         onMouseEnter={() => setActive(active)}
@@ -39,17 +42,17 @@ const UserCabinet: React.FC = () => {
           className="user-about-salesman"
           onClick={() => setActive(!active)}
         >
-          Кабінет продавця
+          {t('user-cabinet.user-about-salesman')}
         </Link>
         <Link
           to="/user-byer-cabinet"
           className="user-about-byer"
           onClick={() => setActive(!active)}
         >
-          Кабінет покупця
+          {t('user-cabinet.user-about-byer')}
         </Link>
         <button className="btn-logout" onClick={out}>
-          Вийти
+          {t('user-cabinet.btn-logout')}
         </button>
       </div>
       <img src={userCabinet} alt="user" className="user-img" />

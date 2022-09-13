@@ -1,29 +1,32 @@
 import './AboutUs.css'
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import '../../../../../helpers/i18next'
 
 export const AboutUs: React.FC = () => {
+  const { t } = useTranslation()
   return (
     <div>
       <p className="buyer-title">Про нас</p>
       <div className="buyer-link">
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Про prom.ua</NavLink>
+          <Link to={'!#'}>Про prom.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Робота в prom.ua</NavLink>
+          <Link to={'!#'}>{t('about.work')} в prom.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Довідка та FAQ</NavLink>
+          <Link to={'!#'}>{t('about.paper')} FAQ</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Контактна інформація</NavLink>
+          <Link to={'!#'}>{t('about.contact')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Захист легальності контенту</NavLink>
+          <Link to={'!#'}>{t('about.content')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Content legality protection</NavLink>
+          <Link to={'!#'}>Content legality protection</Link>
         </div>
       </div>
     </div>

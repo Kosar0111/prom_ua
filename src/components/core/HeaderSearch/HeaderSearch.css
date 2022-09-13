@@ -35,6 +35,7 @@
   border: 1px solid grey;
   border-radius: 10px;
   margin-right: 20px;
+  overflow: hidden;
 }
 .input__search {
   width: 98%;
