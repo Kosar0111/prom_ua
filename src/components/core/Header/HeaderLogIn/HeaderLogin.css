@@ -24,6 +24,12 @@
   margin: 0 5px;
   cursor: pointer;
 }
+.rus-invisible,
+.ua-invisible {
+  opacity: 0.3;
+  margin: 0 5px;
+  cursor: pointer;
+}
 .emoji {
   height: 15px;
   width: 15px;

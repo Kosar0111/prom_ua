@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import ReactTooltip from 'react-tooltip'
 
 import emoji from '../../../../assets/img/emoji.png'
 
@@ -16,18 +17,32 @@ export const HeaderLogin = () => {
   const changeLanguage: changeLanguage = lang => {
     i18n.changeLanguage(lang)
   }
+  const langu = localStorage.getItem('i18nextLng')
 
   const { isAuth, register } = useAppSelector(state => state.auth)
   return (
     <div className="header-login">
       <div className="language">
-        <div className="ua" onClick={() => changeLanguage('ua')}>
+        <div
+          className={langu === 'ua' ? 'ua' : 'ua-invisible'}
+          onClick={() => changeLanguage('ua')}
+          data-tip="Українською <br/>
+          мовою"
+          data-for="langUa"
+        >
           укр
         </div>
-        |
-        <div className="rus" onClick={() => changeLanguage('ru')}>
+        <ReactTooltip id="langUa" place="top" multiline={true} />|
+        <div
+          className={langu === 'ru' ? 'rus' : 'rus-invisible'}
+          onClick={() => changeLanguage('ru')}
+          data-tip="Русским <br/>
+           языком"
+          data-for="langRu"
+        >
           рус
         </div>
+        <ReactTooltip type="info" id="langRu" place="top" multiline={true} />
       </div>
       <div className="help">
         <div className="help__emoji">
