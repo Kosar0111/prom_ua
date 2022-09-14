@@ -46,6 +46,7 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
     validationSchema
   })
   if (loginOpen) {
+    document.body.style.overflow = 'hidden'
     return createPortal(
       <>
         <ToastContainer />
@@ -95,6 +96,8 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
       </>,
       modalLogin
     )
+  } else {
+    document.body.style.overflow = 'scroll'
+    return null
   }
-  return null
 }

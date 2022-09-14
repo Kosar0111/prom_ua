@@ -51,7 +51,7 @@
 }
 .user-about-name {
   font-weight: bold;
-  cursor: none;
+  cursor: default;
 }
 .btn-logout {
   border: none;

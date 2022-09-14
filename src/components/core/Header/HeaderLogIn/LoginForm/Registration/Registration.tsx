@@ -54,6 +54,7 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   })
 
   if (registrationOpen) {
+    document.body.style.overflow = 'hidden'
     return createPortal(
       <>
         {register && <ToastContainer />}
@@ -145,7 +146,9 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
       </>,
       modalRegistration
     )
+  } else {
+    document.body.style.overflow = 'scroll'
+    return null
   }
-  return null
 }
 export { Registration }
