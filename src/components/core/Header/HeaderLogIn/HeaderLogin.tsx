@@ -29,10 +29,19 @@ export const HeaderLogin = () => {
           data-tip="Українською <br/>
           мовою"
           data-for="langUa"
+          data-delay-show="100"
+          data-delay-hide="100"
         >
           укр
         </div>
-        <ReactTooltip id="langUa" place="top" multiline={true} />|
+        <ReactTooltip
+          id="langUa"
+          place="top"
+          multiline={true}
+          data-delay-show="100"
+          data-delay-hide="100"
+        />
+        |
         <div
           className={langu === 'ru' ? 'rus' : 'rus-invisible'}
           onClick={() => changeLanguage('ru')}
