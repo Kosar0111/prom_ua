@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactTooltip from 'react-tooltip'
 
@@ -13,6 +14,7 @@ import './HeaderLogin.css'
 
 type changeLanguage = (lang: string) => void
 export const HeaderLogin = () => {
+  const [tooltip, showTooltip] = useState(true)
   const { t, i18n } = useTranslation()
   const changeLanguage: changeLanguage = lang => {
     i18n.changeLanguage(lang)
@@ -31,16 +33,23 @@ export const HeaderLogin = () => {
           data-for="langUa"
           data-delay-show="100"
           data-delay-hide="100"
+          onMouseEnter={() => showTooltip(true)}
+          onMouseLeave={() => {
+            showTooltip(false)
+            setTimeout(() => showTooltip(true), 50)
+          }}
         >
           укр
         </div>
-        <ReactTooltip
-          id="langUa"
-          place="top"
-          multiline={true}
-          data-delay-show="100"
-          data-delay-hide="100"
-        />
+        {tooltip && (
+          <ReactTooltip
+            id="langUa"
+            place="top"
+            multiline={true}
+            data-delay-show="100"
+            data-delay-hide="100"
+          />
+        )}
         |
         <div
           className={langu === 'ru' ? 'rus' : 'rus-invisible'}
@@ -48,10 +57,15 @@ export const HeaderLogin = () => {
           data-tip="Русским <br/>
            языком"
           data-for="langRu"
+          onMouseEnter={() => showTooltip(true)}
+          onMouseLeave={() => {
+            showTooltip(false)
+            setTimeout(() => showTooltip(true), 50)
+          }}
         >
           рус
         </div>
-        <ReactTooltip type="info" id="langRu" place="top" multiline={true} />
+        {tooltip && <ReactTooltip type="info" id="langRu" place="top" multiline={true} />}
       </div>
       <div className="help">
         <div className="help__emoji">
