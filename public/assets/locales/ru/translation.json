@@ -1,0 +1,104 @@
+{
+  "page_not_exist": "Такой страницы не существует",
+  "header": {
+    "pay__text-green": "безопастная оплата картой на Проме",
+    "pay__btn": "Детально"
+  },
+  "header-search": {
+    "search__input": "Найти",
+    "search__region": "Украина"
+  },
+  "header-login": {
+    "launguage__text_for_you": "Специально для вас",
+    "launguage__text_help": "Помощь",
+    "mobile__text-add": "Мобильное приложение",
+    "mobile__text": "Начать продавать на prom.ua"
+  },
+  "registration": {
+    "registration__modal-h1": "Создать профиль",
+    "registration__modal-login": "Вашe имя",
+    "registration__modal-name": "Ваша фамилия",
+    "registration__modal-pass": "Введите ваш пароль",
+    "registration__modal-btn": "Зарегистрироваться",
+    "error-api": "Произошла ошибка:"
+  },
+  "login": {
+    "login__modal-h1": "Войти в кабинет",
+    "login__modal-pass": "Введите ваш пароль",
+    "login__modal-btn": " Войти"
+  },
+  "user-cabinet": {
+    "user-about-cabinet": "Мой кабинет",
+    "loginform__login": "Войти",
+    "loginform__registration": "Зарегистрироваться",
+    "user-about-salesman": "Кабинет продавца",
+    "user-about-byer": "Кабинет покупателя",
+    "btn-logout": "Выйти"
+  },
+  "navbar": {
+    "emoji": "Предложение месяца",
+    "notebook": "Школьные товары на Проме",
+    "arrow__bar": "Покупают сейчас",
+    "shoes": "Одежда и обувь",
+    "technicka": "Техника и электроника",
+    "accessories": "Украшения и  аксессуары",
+    "sport": "Спорт и отдых",
+    "millitary": "Военторг",
+    "goods": "Товары для бизнеса",
+    "service": "Услуги",
+    "order": "Заказать услугу"
+  },
+  "store": {
+    "create__store": "Продавать по всей",
+    "create__store1": "Украине",
+    "create__store-btn": "Создать магазин"
+  },
+  "footer-down": {
+    "footer-down__text": "Насколько вам",
+    "footer-down__text1": "удобно на проме?",
+    "footer-down__btn": "Расказать"
+  },
+  "footer-social": {
+    "swich__on": "Тёмная тема: отключена"
+  },
+  "cabinet": {
+    "cabinet__fqa-text1": "Хочешь продавать на prom.ua?",
+    "cabinet__fqa-text2": "ЯЕсли у вас есть бизнес - создайте компанию",
+    "btn__sale": "Начать продавать на prom.ua",
+    "cabint__link": "Перейти в кабинет компании",
+    "cabinet__link-personal": "Перейти в личный кабинет"
+  },
+  "salesman": {
+    "buyer-title": "Продавцам",
+    "buyer": "Информация для продавцов",
+    "buyer-sale": "Как начать продавать на prom.ua",
+    "buyer-traf": "Тарифы",
+    "buyer-acces": "Возможность продвигать на Prosale",
+    "buyer-user": "Сделка пользователя",
+    "buyer-polit": "Политика конфедициальності",
+    "buyer-rules": "Правила пользования порталом",
+    "buyer-google": "Инструкция Google Ads",
+    "buyer-bonus": "Бонусная программа электронный маркетплейс "
+  },
+  "partner": {
+    "partner-title": "Партнеры",
+    "partner-ontime": "Во-время",
+    "partner-diler": "Официальные диллеры "
+  },
+  "buyer": {
+    "buyer-title": "Покупателям",
+    "buyer-paper": "Информация для покупателя",
+    "buyer-support": "Получить поддержку",
+    "buyer-how": "Как покупать",
+    "buyer-back": "Как оставить полезный отзыв",
+    "buyer-recomend": "Рекомендации для безопасных покупок",
+    "buyer-check": "Проверка на принадлежность сайта к",
+    "buyer-check1": "платформе"
+  },
+  "about": {
+    "work": "Работа",
+    "paper": "Справка и",
+    "contact": "Контактная информация",
+    "content": "Защита легальности контента"
+  }
+}

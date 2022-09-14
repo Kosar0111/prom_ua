@@ -1,9 +1,11 @@
 import './Registration.css'
 import { createPortal } from 'react-dom'
 import { useFormik, FormikProps } from 'formik'
+import { useTranslation } from 'react-i18next'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import '../../../../../../helpers/i18next'
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
 
 import { registrUser } from '../../../../../../store/authSlice'
@@ -27,6 +29,7 @@ const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
 const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
   const notify = () => toast.success('You registered successfully!')
+  const { t } = useTranslation()
 
   const dispatch = useAppDispatch()
   const { register, message, regError, loading } = useAppSelector(state => state.auth)
@@ -63,9 +66,11 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
             >
               X
             </div>
-            <h1 className="registration__modal-h1">Створити профіль</h1>
+            <h1 className="registration__modal-h1">{t('registration.registration__modal-h1')}</h1>
             <div className="registration__modal-content">
-              <label className="registration__modal-login">Вашe імя</label>
+              <label className="registration__modal-login">
+                {t('registration.registration__modal-login')}
+              </label>
               <input
                 type="text"
                 className="registration__modal-input"
@@ -76,7 +81,9 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
                 onChange={formik.handleChange}
               />
               {formik.errors.name && <div className="error">{formik.errors.name}</div>}
-              <label className="registration__modal-login">Вашe прізвище</label>
+              <label className="registration__modal-login">
+                {t('registration.registration__modal-name')}
+              </label>
               <input
                 type="text"
                 className="registration__modal-input"
@@ -98,7 +105,9 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
                 onChange={formik.handleChange}
               />
               {formik.errors.email && <div className="error">{formik.errors.email}</div>}
-              <label className="registration__modal-pass">Введіть ваш пароль</label>
+              <label className="registration__modal-pass">
+                {t('registration.registration__modal-pass')}
+              </label>
               <input
                 type="password"
                 className="registration__modal-pass-input"
@@ -121,11 +130,15 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
               />
               {formik.errors.phone && <div className="error">{formik.errors.phone}</div>}
               <button type="submit" className="registration__modal-btn" disabled={!formik.isValid}>
-                Зареєструватися
+                {t('registration.registration__modal-btn')}
               </button>
             </div>
           </form>
-          {regError && <h2 className="error-api">An error occured: {message}</h2>}
+          {regError && (
+            <h2 className="error-api">
+              {t('registration.error-api')} {message}
+            </h2>
+          )}
           {loading && <img className="load" src={load} alt="loading" />}
           {register && notify()}
         </div>

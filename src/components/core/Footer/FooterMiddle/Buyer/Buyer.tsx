@@ -1,31 +1,34 @@
 import './Buyer.css'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import '../../../../../helpers/i18next'
 
 export const Buyer: React.FC = () => {
+  const { t } = useTranslation()
   return (
     <div>
-      <p className="buyer-title">Покупцям</p>
+      <p className="buyer-title">{t('buyer.buyer-title')}</p>
       <div className="buyer-link">
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Довідка для покупців</NavLink>
+          <Link to={'!#'}>{t('buyer.buyer-paper')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Отримати підтримку</NavLink>
+          <Link to={'!#'}>{t('buyer.buyer-support')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Як купувати на prom.ua</NavLink>
+          <Link to={'!#'}>{t('buyer.buyer-how')} на prom.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Як залишити корисний відгук</NavLink>
+          <Link to={'!#'}>{t('buyer.buyer-back')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Рекомендації з безпечних покупок</NavLink>
+          <Link to={'!#'}>{t('buyer.buyer-recomend')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>
-            Перевірка на приналежність сайту до
-            <br /> платформи prom.ua
-          </NavLink>
+          <Link to={'!#'}>
+            {t('buyer.buyer-check')}
+            <br /> {t('buyer.buyer-check1')} prom.ua
+          </Link>
         </div>
       </div>
     </div>

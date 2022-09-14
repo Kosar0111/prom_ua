@@ -1,40 +1,43 @@
 import './Partners.css'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import '../../../../../helpers/i18next'
 
 export const Partners: React.FC = () => {
+  const { t } = useTranslation()
   return (
     <div>
-      <p className="buyer-title">Партнери</p>
+      <p className="buyer-title">{t('partner.partner-title')}</p>
       <div className="buyer-link">
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>EVO.business</NavLink>
+          <Link to={'!#'}>EVO.business</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Kabanchik.ua</NavLink>
+          <Link to={'!#'}>Kabanchik.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Вчасно</NavLink>
+          <Link to={'!#'}>{t('partner.partner-ontime')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Crafta.ua</NavLink>
+          <Link to={'!#'}>Crafta.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Zakupki.prom.ua</NavLink>
+          <Link to={'!#'}>Zakupki.prom.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Shafa</NavLink>
+          <Link to={'!#'}>Shafa</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>IZI.ua</NavLink>
+          <Link to={'!#'}>IZI.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Тури на Rozetka Travel</NavLink>
+          <Link to={'!#'}>Тури на Rozetka Travel</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Bigl.ua</NavLink>
+          <Link to={'!#'}>Bigl.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Офіційні дилери prom.ua</NavLink>
+          <Link to={'!#'}>{t('partner.partner-diler')} prom.ua</Link>
         </div>
       </div>
     </div>

@@ -1,40 +1,43 @@
 import './Salesman.css'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import '../../../../../helpers/i18next'
 
 export const Salesman = () => {
+  const { t } = useTranslation()
   return (
     <div>
-      <p className="buyer-title">Продавцям</p>
+      <p className="buyer-title">{t('salesman.buyer-title')}</p>
       <div className="buyer-link">
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Довідка для продавців</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Як почати продавати на prom.ua</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-sale')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Тарифи</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-traf')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Доступ та просування в каталозі Prosale</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-acces')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Угода користувача</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-user')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Політика конфіденційності</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-polit')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Правила користування порталом</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-rules')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>Інструкція Google Ads</NavLink>
+          <Link to={'!#'}>{t('salesman.buyer-google')}</Link>
         </div>
         <div className="buyer-link__item">
-          <NavLink to={'!#'}>
-            Бонусна програма електронний маркетплейс <br />
+          <Link to={'!#'}>
+            {t('salesman.buyer-bonus')} <br />
             PROM
-          </NavLink>
+          </Link>
         </div>
       </div>
     </div>

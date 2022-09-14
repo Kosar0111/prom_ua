@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import './SocialNetwork.css'
 import google from '../../../../assets/img/google.png'
 import apple from '../../../../assets/img/apple.png'
@@ -6,8 +8,10 @@ import youtube from '../../../../assets/img/youtube.jpeg'
 import facebook from '../../../../assets/img/facebook.png'
 import insta from '../../../../assets/img/insta.jpeg'
 import sun from '../../../../assets/img/sun.png'
+import '../../../../helpers/i18next'
 
 export const SocialNetwork = () => {
+  const { t } = useTranslation()
   return (
     <div className="img-all">
       <div className="img-pay">
@@ -18,7 +22,7 @@ export const SocialNetwork = () => {
       <div className="theme__dark">
         <img src={sun} alt="sun" className="sun" />
         <div>
-          <span className="swich__on">Темна тема: вимкнена</span>
+          <span className="swich__on">{t('footer-social.swich__on')}</span>
           <span>Бета-тест</span>
         </div>
       </div>

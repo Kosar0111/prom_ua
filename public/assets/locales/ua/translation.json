@@ -1,0 +1,104 @@
+{
+  "page_not_exist": "Такої сторінки не існує",
+  "header": {
+    "pay__text-green": "безпечна оплата карткою на Промі",
+    "pay__btn": "Детальніше"
+  },
+  "header-search": {
+    "search__input": "Знайти",
+    "search__region": "Україна"
+  },
+  "header-login": {
+    "launguage__text_for_you": "Спеціально для вас",
+    "launguage__text_help": "Допомога",
+    "mobile__text-add": "Мобільний додаток",
+    "mobile__text": "Почати продавати на prom.ua"
+  },
+  "registration": {
+    "registration__modal-h1": "Створити профіль",
+    "registration__modal-login": "Вашe імя",
+    "registration__modal-name": "Вашe прізвище",
+    "registration__modal-pass": "Введіть ваш пароль",
+    "registration__modal-btn": "Зареєструватися",
+    "error-api": "Трапилась помилка:"
+  },
+  "login": {
+    "login__modal-h1": "Увійти в кабінет",
+    "login__modal-pass": "Введіть ваш пароль",
+    "login__modal-btn": " Увійти"
+  },
+  "user-cabinet": {
+    "user-about-cabinet": "Мій кабінет",
+    "loginform__login": "Увійти",
+    "loginform__registration": "Зареєструватися",
+    "user-about-salesman": "Кабінет продавця",
+    "user-about-byer": "Кабінет покупця",
+    "btn-logout": "Вийти"
+  },
+  "navbar": {
+    "emoji": "Пропозиція місяця",
+    "notebook": "Шкільні товари на Промі",
+    "arrow__bar": "Зараз купують",
+    "shoes": "Одяг взуття",
+    "technicka": "Техніка та електроніка",
+    "accessories": "Прикраси та аксесуари",
+    "sport": "Спорт і відпочинок",
+    "millitary": "Воєнторг",
+    "goods": "Товари для бізнесу",
+    "service": "Послуги",
+    "order": "Замовити послугу"
+  },
+  "store": {
+    "create__store": "Продавати по всій",
+    "create__store1": "Україні",
+    "create__store-btn": "Створити магазин"
+  },
+  "footer-down": {
+    "footer-down__text": "Наскільки вам",
+    "footer-down__text1": "зручно на промі?",
+    "footer-down__btn": "Розказати"
+  },
+  "footer-social": {
+    "swich__on": "Темна тема: вимкнена"
+  },
+  "cabinet": {
+    "cabinet__fqa-text1": "Хочеш продавати на prom.ua?",
+    "cabinet__fqa-text2": "Якщо у вас є бізнес - створюйте компанию",
+    "btn__sale": "Почати продавати на prom.ua",
+    "cabint__link": "Перейти в кабінет компанії",
+    "cabinet__link-personal": "Перейти в особистий кабінет"
+  },
+  "salesman": {
+    "buyer-title": "Продавцям",
+    "buyer": "Довідка для продавців",
+    "buyer-sale": "Як почати продавати на prom.ua",
+    "buyer-traf": "Тарифи",
+    "buyer-acces": "Доступ та просування в каталозі Prosale",
+    "buyer-user": "Угода користувача",
+    "buyer-polit": "Політика конфіденційності",
+    "buyer-rules": "Правила користування порталом",
+    "buyer-google": "Інструкція Google Ads",
+    "buyer-bonus": "Бонусна програма електронний маркетплейс "
+  },
+  "partner": {
+    "partner-title": "Партнери",
+    "partner-ontime": "Вчасно",
+    "partner-diler": "Офіційні дилери "
+  },
+  "buyer": {
+    "buyer-title": "Покупцям",
+    "buyer-paper": "Довідка для покупців",
+    "buyer-support": "Отримати підтримкy",
+    "buyer-how": "Як купувати",
+    "buyer-back": "Як залишити корисний відгук",
+    "buyer-recomend": "Рекомендації з безпечних покупоk",
+    "buyer-check": "Перевірка на приналежність сайту до",
+    "buyer-check1": "платформи"
+  },
+  "about": {
+    "work": "Робота",
+    "paper": "Довідка та",
+    "contact": "Контактна інформація",
+    "content": "Захист легальності контенту"
+  }
+}
