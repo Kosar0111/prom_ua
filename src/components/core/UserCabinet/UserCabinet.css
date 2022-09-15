@@ -42,7 +42,7 @@
   margin: 15px 10px;
 }
 .user-about-salesman,
-.user-about-byer {
+.user-about-buyer {
   display: block;
   text-decoration: none;
   color: black;
@@ -62,6 +62,6 @@
 }
 .btn-logout:hover,
 .user-about-salesman:hover,
-.user-about-byer:hover {
+.user-about-buyer:hover {
   text-decoration: underline;
 }

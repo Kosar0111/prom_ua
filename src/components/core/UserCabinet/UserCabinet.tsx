@@ -46,11 +46,11 @@ const UserCabinet: React.FC = () => {
           {t('user-cabinet.user-about-salesman')}
         </Link>
         <Link
-          to="/user-byer-cabinet"
-          className="user-about-byer"
+          to="/user-buyer-cabinet"
+          className="user-about-buyer"
           onClick={() => setActive(!active)}
         >
-          {t('user-cabinet.user-about-byer')}
+          {t('user-cabinet.user-about-buyer')}
         </Link>
         <button className="btn-logout" onClick={out}>
           {t('user-cabinet.btn-logout')}

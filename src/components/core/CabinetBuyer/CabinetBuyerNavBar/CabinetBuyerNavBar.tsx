@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import './CabinetByerNavBar.css'
+import './CabinetBuyerNavBar.css'
 
-export const CabinetByerNavBar: FC = () => {
+export const CabinetBuyerNavBar: FC = () => {
   return (
     <div className="navbar-list">
       <div className="navbar-list__item">

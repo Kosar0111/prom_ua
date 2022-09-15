@@ -48,7 +48,7 @@ export const logIn = createAsyncThunk('users/getUsers', async (client: FormModel
   )
 
   if (auth) return auth
-  throw new Error(' You entered incorreced data')
+  throw new Error(' You entered incorrect data')
 })
 
 export const registrUser = createAsyncThunk<IUser, ActionPayload>('users/registr', async value => {
