@@ -12,7 +12,7 @@ interface IUserSlice {
   regError: boolean
   authError: boolean
   register: boolean
-  isAuth: boolean
+  isAuthBool: boolean
   message: string
 }
 
@@ -21,7 +21,7 @@ const initialState: IUserSlice = {
   regError: false,
   authError: false,
   register: false,
-  isAuth: false,
+  isAuthBool: false,
   message: '',
   users: {
     id: '',
@@ -96,7 +96,7 @@ const authSlice = createSlice({
         password: '',
         phone: ''
       }
-      state.isAuth = false
+      state.isAuthBool = false
       state.register = false
       state.loading = false
       document.cookie = 'name='
@@ -106,7 +106,7 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(logIn.pending, state => {
       state.loading = true
-      state.isAuth = false
+      state.isAuthBool = false
       state.authError = false
       state.message = ''
     })
@@ -115,15 +115,15 @@ const authSlice = createSlice({
       authSlice.caseReducers.userLog(state, action)
       const token = action.payload.token
       document.cookie = `name=${token}`
-      state.isAuth = true
+      state.isAuthBool = true
       state.authError = false
       state.message = ''
     })
     builder.addCase(logIn.rejected, state => {
       state.loading = false
-      state.isAuth = false
+      state.isAuthBool = false
       state.authError = true
-      state.message = 'Somthing went wrong'
+      state.message = 'Something went wrong'
     })
 
     builder.addCase(registrUser.pending, state => {
@@ -151,13 +151,12 @@ const authSlice = createSlice({
       state.loading = true
     })
     builder.addCase(isAuth.fulfilled, (state, action: PayloadAction<IUser>) => {
-      state.isAuth = true
-
+      state.isAuthBool = true
       authSlice.caseReducers.userLog(state, action)
     })
     builder.addCase(isAuth.rejected, state => {
       state.loading = false
-      state.isAuth = false
+      state.isAuthBool = false
     })
   }
 })

@@ -13,6 +13,7 @@ const UserCabinet: React.FC = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.auth.users)
+
   const out = () => {
     dispatch(logOut())
   }

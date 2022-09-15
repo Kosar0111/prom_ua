@@ -11,22 +11,22 @@ export const AboutUs: React.FC = () => {
       <p className="buyer-title">Про нас</p>
       <div className="buyer-link">
         <div className="buyer-link__item">
-          <Link to={'!#'}>Про prom.ua</Link>
+          <Link to="/">Про prom.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('about.work')} в prom.ua</Link>
+          <Link to="/">{t('about.work')} в prom.ua</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('about.paper')} FAQ</Link>
+          <Link to="/">{t('about.paper')} FAQ</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('about.contact')}</Link>
+          <Link to="/">{t('about.contact')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('about.content')}</Link>
+          <Link to="/">{t('about.content')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>Content legality protection</Link>
+          <Link to="/">Content legality protection</Link>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export const HeaderLogin = () => {
   }
   const langu = localStorage.getItem('i18nextLng')
 
-  const { isAuth, register } = useAppSelector(state => state.auth)
+  const { isAuthBool, register } = useAppSelector(state => state.auth)
   return (
     <div className="header-login">
       <div className="language">
@@ -78,7 +78,7 @@ export const HeaderLogin = () => {
           <p className="mobile__text">{t('header-login.mobile__text')}</p>
         </div>
       </div>
-      {isAuth || register ? <UserCabinet /> : <LoginForm />}
+      {isAuthBool || register ? <UserCabinet /> : <LoginForm />}
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 
-import { useAppDispatch } from './hooks/hooks'
+import { useAppDispatch, useAppSelector } from './hooks/hooks'
 
 import './App.css'
 import { HomePage } from './components/pages/HomePages/HomePage'
@@ -13,19 +14,27 @@ import { NotfoundPage } from './components/pages/Notfoundpage/NotfoundPage'
 import { MainNavBar } from './components/pages/MainNavBar/MainNavBar'
 import { SalesNavBar } from './components/pages/SalesNavBar/SalesNavBar'
 
+import 'react-toastify/dist/ReactToastify.css'
+
 export const App = () => {
+  const { register, isAuthBool } = useAppSelector(state => state.auth)
+  const notify = () => toast.success('You registered successfully!')
+  const notify1 = () => toast.success('Your authorization successfully!')
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (document.cookie !== 'name=') {
       dispatch(isAuth(document.cookie))
     }
-  }, [])
+  }, [dispatch])
   return (
     <>
+      <ToastContainer />
       <Routes>
+        {register && notify()}
+        {isAuthBool && notify1()}
         <Route path="/" element={<HomePage />}>
           <Route index element={<MainPage />} />
-          <Route path="user-byer-cabinet/*" element={<CabinetByer />}>
+          <Route path="user-byer-cabinet/" element={<CabinetByer />}>
             <Route index element={<MainNavBar />} />
             <Route path="possibilitis" element={<h1>Your possibilitis</h1>} />
             <Route path="wants" element={<h1>Your wants</h1>} />
