@@ -1,4 +1,5 @@
 import { HomePage } from '../components/pages/HomePages/HomePage'
+import { ShoesList } from '../components/core/ShoesList/ShoesList'
 import { MainPage } from '../components/pages/MainPage/MainPage'
 import { CabinetBuyer } from '../components/core/CabinetBuyer/CabinetBuyer'
 import { CabinetSalesMan } from '../components/core/CabinetSalesMan/CabinetSalesMan'
@@ -12,6 +13,7 @@ export const routes = [
     element: <HomePage />,
     children: [
       { index: true, element: <MainPage /> },
+      { path: 'shoes', element: <ShoesList /> },
       {
         path: 'user-buyer-cabinet/',
         element: <CabinetBuyer />,

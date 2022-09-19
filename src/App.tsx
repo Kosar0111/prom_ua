@@ -19,14 +19,15 @@ export const App = () => {
   useEffect(() => {
     if (document.cookie !== 'name=') {
       dispatch(isAuth(document.cookie))
+    } else if (document.cookie === 'name=') {
+      document.cookie = 'name='
     }
   }, [dispatch])
-  {
-    register && notify()
-  }
-  {
-    isAuthBool && notify1()
-  }
+
+  useEffect(() => {
+    ;(isAuthBool && notify1()) || (register && notify())
+  }, [isAuthBool, register])
+
   return (
     <>
       <ToastContainer />

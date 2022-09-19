@@ -53,12 +53,11 @@ export const Registration: React.FC<IRegistrationProps> = ({
   })
 
   if (registrationOpen) {
-    document.body.style.overflow = 'hidden'
     return createPortal(
       <>
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
         <div className="registration__modal" onClick={e => e.stopPropagation()}>
-          <form className="registration__modal-wraper" onSubmit={formik.handleSubmit}>
+          <form className="registration__modal-wrapper" onSubmit={formik.handleSubmit}>
             <div
               className="registration__modal-close"
               onClick={() => setRegistrationOpen(!registrationOpen)}
@@ -145,8 +144,6 @@ export const Registration: React.FC<IRegistrationProps> = ({
       </>,
       modalRegistration
     )
-  } else {
-    document.body.style.overflow = 'scroll'
-    return null
   }
+  return null
 }

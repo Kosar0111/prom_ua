@@ -45,7 +45,7 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
   })
 
   if (loginOpen) {
-    document.body.style.overflow = 'hidden'
+    // document.body.style.overflow = 'hidden'
     return createPortal(
       <>
         <div className="login" onClick={() => setLoginOpen(!loginOpen)}></div>
@@ -95,8 +95,6 @@ export const LogIn: React.FC<ILogInProps> = ({ loginOpen, setLoginOpen }) => {
       </>,
       modalLogin
     )
-  } else {
-    document.body.style.overflow = 'scroll'
-    return null
   }
+  return null
 }
