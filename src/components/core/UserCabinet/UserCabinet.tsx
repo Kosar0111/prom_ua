@@ -14,7 +14,7 @@ const UserCabinet: React.FC = () => {
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.auth.users)
   const { isAuthBool } = useAppSelector(state => state.auth)
-  console.log(isAuthBool)
+
   const out = () => {
     dispatch(logOut())
   }

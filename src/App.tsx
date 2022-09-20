@@ -17,10 +17,9 @@ export const App = () => {
   const notify1 = () => toast.success('Your authorization successfully!')
   const dispatch = useAppDispatch()
   useEffect(() => {
+    document.cookie = 'name='
     if (document.cookie !== 'name=') {
       dispatch(isAuth(document.cookie))
-    } else if (document.cookie === 'name=') {
-      document.cookie = 'name='
     }
   }, [dispatch])
 
