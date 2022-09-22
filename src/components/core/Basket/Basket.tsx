@@ -1,0 +1,84 @@
+import { FC } from 'react'
+import { createPortal } from 'react-dom'
+
+import { BasketItem } from '../BasketItem/BasketItem'
+
+import arrLeft from '../../../assets/img/arrow-left.png'
+import { useAppSelector } from '../../../hooks/hooks'
+import './Basket.css'
+
+type BasketProps = {
+  basketOpen: boolean
+  setBasketOpen: (basketOpen: boolean) => void
+}
+
+const modalBAsket: any = document.getElementById('modalBasket')
+
+export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
+  const { items } = useAppSelector(state => state.basket)
+  const { isAuthBool, register } = useAppSelector(state => state.auth)
+
+  basketOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'scroll')
+  if (basketOpen && (isAuthBool || register)) {
+    return createPortal(
+      <>
+        <div className="basket-wrapper" onClick={() => setBasketOpen(!basketOpen)}></div>
+        <div className="basket__modal" onClick={e => e.stopPropagation()}>
+          <div className="basket__header">
+            <img
+              src={arrLeft}
+              alt="basket-arr"
+              className="basket-img__header"
+              onClick={() => setBasketOpen(!basketOpen)}
+            />
+            <span className="basket__header-text">Кошик</span>
+          </div>
+          {items.length === 0 ? (
+            <div className="basket__main">
+              <h3 className="basket__main-h3">В кошику немає товарів</h3>
+              <p className="basket__main-p">
+                У вас гарний смак.
+                <br />А у нас багато цікавих та потрібних речей.
+              </p>
+              <button className="basket-btn" onClick={() => setBasketOpen(!basketOpen)}>
+                За покупками
+              </button>
+            </div>
+          ) : (
+            <div className="basket__main">
+              {items.map(item => (
+                <BasketItem key={item.id} {...item} />
+              ))}
+            </div>
+          )}
+        </div>
+      </>,
+      modalBAsket
+    )
+  } else if (basketOpen && (!isAuthBool || !register)) {
+    return createPortal(
+      <>
+        <div className="basket-wrapper" onClick={() => setBasketOpen(!basketOpen)}></div>
+        <div className="basket__modal" onClick={e => e.stopPropagation()}>
+          <div className="basket__header">
+            <img
+              src={arrLeft}
+              alt="basket-arr"
+              className="basket-img__header"
+              onClick={() => setBasketOpen(!basketOpen)}
+            />
+            <span className="basket__header-text">Кошик</span>
+          </div>
+          <div className="basket__main">
+            <h2 className="basket__main-h3"> Ви ще не зареєструвалися</h2>
+            <button className="basket-btn" onClick={() => setBasketOpen(!basketOpen)}>
+              Назад на головну
+            </button>
+          </div>
+        </div>
+      </>,
+      modalBAsket
+    )
+  }
+  return null
+}
