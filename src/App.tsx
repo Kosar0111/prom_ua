@@ -21,7 +21,7 @@ export const App = () => {
     if (document.cookie !== 'name=') {
       dispatch(isAuth(document.cookie))
     }
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     ;(isAuthBool && notify1()) || (register && notify())

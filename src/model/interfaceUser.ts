@@ -13,6 +13,7 @@ export interface IGood {
   img: string
   title: string
   price: number
+  count?: any
   city: string
   nameShop: string
 }

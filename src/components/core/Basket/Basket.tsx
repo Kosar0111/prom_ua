@@ -17,6 +17,8 @@ const modalBAsket: any = document.getElementById('modalBasket')
 export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
   const { items } = useAppSelector(state => state.basket)
   const { isAuthBool, register } = useAppSelector(state => state.auth)
+  const totalPrice = useAppSelector(state => state.basket.totalPrice)
+  console.log(totalPrice)
 
   basketOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'scroll')
   if (basketOpen && (isAuthBool || register)) {
@@ -49,6 +51,13 @@ export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
               {items.map(item => (
                 <BasketItem key={item.id} {...item} />
               ))}
+              <div className="puy-oder">
+                <div className="puy-oder-group">
+                  <div className="puy-oder-text">До оплати без доставки:</div>{' '}
+                  <div className="puy-oder-text">{totalPrice}</div>
+                </div>
+                <button className="btn-puy-oder">Оформити замовлення</button>
+              </div>
             </div>
           )}
         </div>

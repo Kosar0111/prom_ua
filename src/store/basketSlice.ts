@@ -5,6 +5,7 @@ import { IGood } from '../model/interfaceUser'
 interface IGoodslice {
   items: IGood[]
   totalPrice: number
+  totalAmount: number
   loading: boolean
   error: boolean
   message: string
@@ -15,20 +16,44 @@ const initialState: IGoodslice = {
   error: false,
   message: '',
   totalPrice: 0,
-  items: []
+  totalAmount: 0,
+  items: localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items') as string) : []
 }
-
+//
 const basketSlice = createSlice({
   name: 'basket',
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      state.items.push(action.payload)
+      const findItem = state.items.find(el => el.id === action.payload.id)
+      if (findItem) {
+        findItem.count++
+      } else {
+        const tempProduct = { ...action.payload, count: 1 }
+        state.items.push(tempProduct)
+      }
+      localStorage.setItem('items', JSON.stringify(state.items))
+      state.totalPrice = state.items.reduce((sum, item) => {
+        return item.price * item.count + sum
+      }, 0)
     },
     removeProduct: (state, action) => {
       state.items = state.items.filter(el => el.id !== action.payload)
+      localStorage.setItem('items', JSON.stringify(state.items))
+    },
+    increaseProduct: (state, action) => {
+      const findItem = state.items.find(el => el.id === action.payload)
+      if (findItem) {
+        findItem.count++
+      }
+    },
+    decreaseItem: (state, action) => {
+      const findItem = state.items.find(el => el.id === action.payload)
+      if (findItem) {
+        findItem.count--
+      }
     }
   }
 })
-export const { addProduct, removeProduct } = basketSlice.actions
+export const { addProduct, removeProduct, increaseProduct, decreaseItem } = basketSlice.actions
 export default basketSlice.reducer

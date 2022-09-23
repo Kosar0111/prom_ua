@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { BasketItemCount } from '../BasketItemCount/BasketItemCount'
 import { useAppDispatch } from '../../..//hooks/hooks'
 import './BasketItem.css'
 import { IGood } from '../../../model/interfaceUser'
@@ -9,7 +10,8 @@ import { removeProduct } from '../../../store/basketSlice'
 type BasketItemProp = IGood
 
 export const BasketItem: FC<BasketItemProp> = item => {
-  const { id, price, img, title, nameShop } = item
+  const { id, price, img, title, nameShop, count } = item
+
   const dispatch = useAppDispatch()
   const deleteItem = () => {
     dispatch(removeProduct(id))
@@ -27,12 +29,8 @@ export const BasketItem: FC<BasketItemProp> = item => {
         <img src={bucet} alt="vedro" className="vedro" onClick={deleteItem} />
       </div>
       <div className="gap"></div>
-      <div className="puy-oder">
-        <div className="puy-oder-group">
-          <div className="puy-oder-text">До оплати без доставки:</div>{' '}
-          <div className="puy-oder-text">{price}</div>
-        </div>
-        <button className="btn-puy-oder">Оформити замовлення</button>
+      <div className="basket-item__total">
+        <BasketItemCount key={id} id={id} price={price} count={count} />
       </div>
     </div>
   )

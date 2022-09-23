@@ -1,0 +1,35 @@
+.bill {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  align-items: center;
+}
+.bill-count {
+  display: flex;
+  align-items: center;
+}
+.count-minus,
+.count-plus {
+  border: 1px solid purple;
+  color: purple;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.count-minus:hover,
+.count-plus:hover {
+  background-color: purple;
+  color: white;
+}
+.count-minus-lock {
+  border: 1px solid purple;
+  color: purple;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  margin: 0 10px;
+  pointer-events: none;
+  cursor: pointer;
+}
