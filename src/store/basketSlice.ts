@@ -33,9 +33,6 @@ const basketSlice = createSlice({
         state.items.push(tempProduct)
       }
       localStorage.setItem('items', JSON.stringify(state.items))
-      state.totalPrice = state.items.reduce((sum, item) => {
-        return item.price * item.count + sum
-      }, 0)
     },
     removeProduct: (state, action) => {
       state.items = state.items.filter(el => el.id !== action.payload)

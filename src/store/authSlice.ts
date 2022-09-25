@@ -30,7 +30,8 @@ const initialState: IUserSlice = {
     lastName: '',
     email: '',
     password: '',
-    phone: ''
+    phone: '',
+    orders: []
   }
 }
 
@@ -94,19 +95,19 @@ const authSlice = createSlice({
         lastName: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        orders: []
       }
       state.isAuthBool = false
       state.register = false
       state.loading = false
-      document.cookie = 'name='
+      document.cookie = ''
     }
   },
 
   extraReducers: builder => {
     builder.addCase(logIn.pending, state => {
       state.loading = true
-      state.isAuthBool = false
       state.authError = false
       state.message = ''
     })
@@ -137,7 +138,7 @@ const authSlice = createSlice({
       state.register = true
       state.regError = false
       state.message = ''
-      authSlice.caseReducers.register(state, action)
+      authSlice.caseReducers.userLog(state, action)
       document.cookie = `name=${action.payload.token}`
     })
     builder.addCase(registrUser.rejected, state => {

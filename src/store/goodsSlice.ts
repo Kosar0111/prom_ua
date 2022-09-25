@@ -18,7 +18,10 @@ const initialState: IGoodslice = {
   message: '',
   goods: []
 }
-
+export const getGoods = createAsyncThunk('goods/getGoods', async _ => {
+  const response = await axios.get<IGood[]>('http://localhost:3001/goods')
+  return response.data
+})
 const goodsSlice = createSlice({
   name: 'goods',
   initialState,
@@ -49,9 +52,6 @@ const goodsSlice = createSlice({
     })
   }
 })
-export const getGoods = createAsyncThunk('goods/getGoods', async _ => {
-  const response = await axios.get<IGood[]>('http://localhost:3001/goods')
-  return response.data
-})
+
 export const { allGoods } = goodsSlice.actions
 export default goodsSlice.reducer

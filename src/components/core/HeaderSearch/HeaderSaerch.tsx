@@ -40,6 +40,7 @@ const options = [
   }
 ]
 export const HeaderSearch = () => {
+  const { isAuthBool, register } = useAppSelector(state => state.auth)
   const { items } = useAppSelector(state => state.basket)
   const [basketOpen, setBasketOpen] = useState(false)
   const { t } = useTranslation()
@@ -73,7 +74,11 @@ export const HeaderSearch = () => {
             className="basket"
             onClick={() => setBasketOpen(!basketOpen)}
           />
-          {items.length > 0 ? <span className="count-basket">{items.length}</span> : ''}
+          {(items.length && (isAuthBool || register)) > 0 ? (
+            <span className="count-basket">{items.length}</span>
+          ) : (
+            ''
+          )}
         </div>
       </div>
       <Basket basketOpen={basketOpen} setBasketOpen={setBasketOpen} />

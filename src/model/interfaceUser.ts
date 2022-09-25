@@ -6,6 +6,7 @@ export interface IUser {
   email: string
   password: string
   phone: string
+  orders: IGood[]
 }
 
 export interface IGood {
