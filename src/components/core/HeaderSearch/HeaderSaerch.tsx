@@ -1,14 +1,17 @@
+import { useState } from 'react'
 import './HeaderSearch.css'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Select from 'react-select'
 
+import { useAppSelector } from '../../../hooks/hooks'
 import '../../../helpers/i18next'
 import herb from '../../../assets/img/herb.jpeg'
 import micro from '../../../assets/img/micro2.png'
 import geo from '../../../assets/img/geo.png'
 import basket from '../../../assets/img/basket.png'
 import heart from '../../../assets/img/heart.png'
+import { Basket } from '../Basket/Basket'
 
 const options = [
   {
@@ -37,6 +40,9 @@ const options = [
   }
 ]
 export const HeaderSearch = () => {
+  const { isAuthBool, register } = useAppSelector(state => state.auth)
+  const { items } = useAppSelector(state => state.basket)
+  const [basketOpen, setBasketOpen] = useState(false)
   const { t } = useTranslation()
   return (
     <div className="search__wraper">
@@ -62,9 +68,20 @@ export const HeaderSearch = () => {
         </div>
         <div className="basket-all">
           <img src={heart} alt="heart" className="heart" />
-          <img src={basket} alt="basket" className="basket" />
+          <img
+            src={basket}
+            alt="basket"
+            className="basket"
+            onClick={() => setBasketOpen(!basketOpen)}
+          />
+          {(items.length && (isAuthBool || register)) > 0 ? (
+            <span className="count-basket">{items.length}</span>
+          ) : (
+            ''
+          )}
         </div>
       </div>
+      <Basket basketOpen={basketOpen} setBasketOpen={setBasketOpen} />
     </div>
   )
 }

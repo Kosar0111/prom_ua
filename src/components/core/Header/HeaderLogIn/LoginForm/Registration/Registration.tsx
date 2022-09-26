@@ -1,9 +1,8 @@
+/* eslint-disable react/prop-types */
 import './Registration.css'
 import { createPortal } from 'react-dom'
 import { useFormik, FormikProps } from 'formik'
 import { useTranslation } from 'react-i18next'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 import '../../../../../../helpers/i18next'
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
@@ -27,18 +26,18 @@ type FormModel = {
 
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
-const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
-  const notify = () => toast.success('You registered successfully!')
+export const Registration: React.FC<IRegistrationProps> = ({
+  registrationOpen,
+  setRegistrationOpen
+}) => {
   const { t } = useTranslation()
-
   const dispatch = useAppDispatch()
   const { register, message, regError, loading } = useAppSelector(state => state.auth)
 
   const onSubmit = (values: FormModel) => {
     dispatch(registrUser(values))
     formik.resetForm()
-    setRegistrationOpen(!registrationOpen)
-    notify()
+    register && setRegistrationOpen(!registrationOpen)
   }
 
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -56,10 +55,9 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   if (registrationOpen) {
     return createPortal(
       <>
-        {register && <ToastContainer />}
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
         <div className="registration__modal" onClick={e => e.stopPropagation()}>
-          <form className="registration__modal-wraper" onSubmit={formik.handleSubmit}>
+          <form className="registration__modal-wrapper" onSubmit={formik.handleSubmit}>
             <div
               className="registration__modal-close"
               onClick={() => setRegistrationOpen(!registrationOpen)}
@@ -134,13 +132,14 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
               </button>
             </div>
           </form>
-          {regError && (
-            <h2 className="error-api">
-              {t('registration.error-api')} {message}
-            </h2>
-          )}
-          {loading && <img className="load" src={load} alt="loading" />}
-          {register && notify()}
+          <div className="error-loading">
+            {regError && (
+              <h2 className="error-api">
+                {t('registration.error-api')} {message}
+              </h2>
+            )}
+            {loading && <img className="load" src={load} alt="loading" />}
+          </div>
         </div>
       </>,
       modalRegistration
@@ -148,4 +147,3 @@ const Registration: React.FC<IRegistrationProps> = ({ registrationOpen, setRegis
   }
   return null
 }
-export { Registration }

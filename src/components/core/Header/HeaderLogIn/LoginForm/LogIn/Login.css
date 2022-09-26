@@ -18,7 +18,7 @@
   background-color: #fff;
   transition: 0.5s all;
 }
-.login__modal-wraper {
+.login__modal-wrapper {
   margin: 0 auto;
   width: 100%;
 }
@@ -58,7 +58,7 @@
 }
 .login__modal-content {
   width: 80%;
-  margin: 40% auto;
+  margin: 20% auto 20%;
 }
 .login__modal-btn {
   margin: 20px auto;
@@ -66,19 +66,18 @@
   height: 30px;
   font-size: 1.5rem;
   padding: 10px auto;
-   cursor: pointer;
+  cursor: pointer;
 }
-.login__modal-h1 {
-}
-.error-api {
-  display: flex;
-  justify-content: center;
-  color: red;
-}
-.loading {
+.error-loading {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.error-api {
+  color: red;
+  text-align: center;
+}
+.loading {
   height: 20%;
   width: 20%;
 }

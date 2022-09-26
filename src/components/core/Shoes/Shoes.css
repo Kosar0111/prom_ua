@@ -1,0 +1,48 @@
+.shoes-container {
+  width: 20%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: white;
+  margin: 15px;
+  box-sizing: border-box;
+}
+.shoes-img {
+  width: 85%;
+  height: 250px;
+  margin: 20px;
+}
+.shoes-title {
+  margin: 0 0 40px 20px;
+}
+.shoes-price {
+  margin: 0 0 40px 20px;
+  font-weight: 800;
+}
+.shoes-city {
+  margin: 0 0 40px 20px;
+  color: rgb(52, 140, 52);
+}
+.shoes-shop {
+  margin: 0 0 40px 20px;
+}
+.space {
+  margin: auto;
+  margin: 10px;
+  background-color: gray;
+  width: 90%;
+  height: 1.5px;
+}
+.shoes-buy {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: blueviolet;
+  cursor: pointer;
+}
+.shoes-buy:hover {
+  background-color: rgb(94, 6, 177);
+}

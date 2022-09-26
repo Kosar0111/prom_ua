@@ -6,4 +6,15 @@ export interface IUser {
   email: string
   password: string
   phone: string
+  orders: IGood[]
+}
+
+export interface IGood {
+  id: string
+  img: string
+  title: string
+  price: number
+  count?: any
+  city: string
+  nameShop: string
 }

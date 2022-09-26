@@ -13,52 +13,52 @@ export const NavBar: React.FC = () => {
   return (
     <div className="navbar__all">
       <div className="navbar-link__blue">
-        <NavLink to={'!#'}>Military</NavLink>
+        <NavLink to={'/5'}>Military</NavLink>
       </div>
       <div className="navbar-link__blue-emoji">
         <img src={emoji} alt="emoji" className="emoji" />
-        <NavLink to={'!#'}>{t('navbar.emoji')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.emoji')}</NavLink>
       </div>
       <div className="navbar-link__blue-notebook">
         <img src={notebook} alt="notebook" className="notebook" />
-        <NavLink to={'!#'}>{t('navbar.notebook')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.notebook')}</NavLink>
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>{t('navbar.arrow__bar')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.arrow__bar')}</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>{t('navbar.shoes')}</NavLink>
+        <NavLink to={'/shoes'}>{t('navbar.shoes')}</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>{t('navbar.technicka')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.technicka')}</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>Авто, мото</NavLink>
+        <NavLink to={'/5'}>Авто, мото</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>{t('navbar.accessories')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.accessories')}</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>{t('navbar.sport')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.sport')}</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__item">
-        <NavLink to={'!#'}>{t('navbar.millitary')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.millitary')}</NavLink>
         <img src={arrowBar} alt="arrow__bar" className="arrow__bar" />
       </div>
       <div className="navbar-link__blue">
-        <NavLink to={'!#'}>{t('navbar.goods')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.goods')}</NavLink>
       </div>
       <div className="navbar-link__blue">
-        <NavLink to={'!#'}>{t('navbar.service')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.service')}</NavLink>
       </div>
       <div className="navbar-link__blue">
-        <NavLink to={'!#'}>{t('navbar.order')}</NavLink>
+        <NavLink to={'/5'}>{t('navbar.order')}</NavLink>
       </div>
     </div>
   )

@@ -12,7 +12,7 @@ interface IUserSlice {
   regError: boolean
   authError: boolean
   register: boolean
-  isAuth: boolean
+  isAuthBool: boolean
   message: string
 }
 
@@ -21,7 +21,7 @@ const initialState: IUserSlice = {
   regError: false,
   authError: false,
   register: false,
-  isAuth: false,
+  isAuthBool: false,
   message: '',
   users: {
     id: '',
@@ -30,7 +30,8 @@ const initialState: IUserSlice = {
     lastName: '',
     email: '',
     password: '',
-    phone: ''
+    phone: '',
+    orders: []
   }
 }
 
@@ -48,7 +49,7 @@ export const logIn = createAsyncThunk('users/getUsers', async (client: FormModel
   )
 
   if (auth) return auth
-  throw new Error(' You entered incorreced data')
+  throw new Error(' You entered incorrect data')
 })
 
 export const registrUser = createAsyncThunk<IUser, ActionPayload>('users/registr', async value => {
@@ -94,19 +95,19 @@ const authSlice = createSlice({
         lastName: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        orders: []
       }
-      state.isAuth = false
+      state.isAuthBool = false
       state.register = false
       state.loading = false
-      document.cookie = 'name='
+      document.cookie = ''
     }
   },
 
   extraReducers: builder => {
     builder.addCase(logIn.pending, state => {
       state.loading = true
-      state.isAuth = false
       state.authError = false
       state.message = ''
     })
@@ -115,15 +116,15 @@ const authSlice = createSlice({
       authSlice.caseReducers.userLog(state, action)
       const token = action.payload.token
       document.cookie = `name=${token}`
-      state.isAuth = true
+      state.isAuthBool = true
       state.authError = false
       state.message = ''
     })
     builder.addCase(logIn.rejected, state => {
       state.loading = false
-      state.isAuth = false
+      state.isAuthBool = false
       state.authError = true
-      state.message = 'Somthing went wrong'
+      state.message = 'Something went wrong'
     })
 
     builder.addCase(registrUser.pending, state => {
@@ -137,7 +138,7 @@ const authSlice = createSlice({
       state.register = true
       state.regError = false
       state.message = ''
-      authSlice.caseReducers.register(state, action)
+      authSlice.caseReducers.userLog(state, action)
       document.cookie = `name=${action.payload.token}`
     })
     builder.addCase(registrUser.rejected, state => {
@@ -151,13 +152,12 @@ const authSlice = createSlice({
       state.loading = true
     })
     builder.addCase(isAuth.fulfilled, (state, action: PayloadAction<IUser>) => {
-      state.isAuth = true
-
+      state.isAuthBool = true
       authSlice.caseReducers.userLog(state, action)
     })
     builder.addCase(isAuth.rejected, state => {
       state.loading = false
-      state.isAuth = false
+      state.isAuthBool = false
     })
   }
 })

@@ -1,15 +1,15 @@
-.cabinet-byer {
+.cabinet-buyer {
   margin-top: 10px;
   width: 100vw;
   background-color: rgb(246, 243, 243);
 }
-.cabinet-byer-wraper {
+.cabinet-buyer-wrapper {
   display: flex;
   width: 85vw;
   margin: auto;
   position: relative;
 }
-.cabinet-byer-navbar {
+.cabinet-buyer-navbar {
   position: sticky;
   height: 100%;
 }

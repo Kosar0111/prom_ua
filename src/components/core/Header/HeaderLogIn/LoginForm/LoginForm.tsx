@@ -10,7 +10,9 @@ export const LoginForm: React.FC = () => {
   const { t } = useTranslation()
   const [loginOpen, setLoginOpen] = useState(false)
   const [registrationOpen, setRegistrationOpen] = useState(false)
-
+  loginOpen || registrationOpen
+    ? (document.body.style.overflow = 'hidden')
+    : (document.body.style.overflow = 'scroll')
   return (
     <>
       <div className="loginform__main">

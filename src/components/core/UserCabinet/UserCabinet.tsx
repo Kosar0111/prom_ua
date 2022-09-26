@@ -13,12 +13,12 @@ const UserCabinet: React.FC = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.auth.users)
+  const { isAuthBool } = useAppSelector(state => state.auth)
+
   const out = () => {
     dispatch(logOut())
   }
   const [active, setActive] = useState(false)
-
-  const { name, lastName } = user
 
   return (
     <div className="user-about">
@@ -34,9 +34,14 @@ const UserCabinet: React.FC = () => {
         onMouseLeave={() => setActive(!active)}
         className={active ? 'user-about-active' : 'user-about-hidden'}
       >
-        <div className="user-about-name">
-          {name} {lastName}
-        </div>
+        {isAuthBool && user ? (
+          <div className="user-about-name">
+            {user.name} {user.lastName}{' '}
+          </div>
+        ) : (
+          ''
+        )}
+
         <Link
           to="/user-salesman-cabinet"
           className="user-about-salesman"
@@ -45,11 +50,11 @@ const UserCabinet: React.FC = () => {
           {t('user-cabinet.user-about-salesman')}
         </Link>
         <Link
-          to="/user-byer-cabinet"
-          className="user-about-byer"
+          to="/user-buyer-cabinet"
+          className="user-about-buyer"
           onClick={() => setActive(!active)}
         >
-          {t('user-cabinet.user-about-byer')}
+          {t('user-cabinet.user-about-buyer')}
         </Link>
         <button className="btn-logout" onClick={out}>
           {t('user-cabinet.btn-logout')}

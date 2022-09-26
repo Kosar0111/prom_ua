@@ -10,31 +10,31 @@ export const Salesman = () => {
       <p className="buyer-title">{t('salesman.buyer-title')}</p>
       <div className="buyer-link">
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer')}</Link>
+          <Link to="/">{t('salesman.buyer')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-sale')}</Link>
+          <Link to="/">{t('salesman.buyer-sale')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-traf')}</Link>
+          <Link to="/">{t('salesman.buyer-traf')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-acces')}</Link>
+          <Link to="/">{t('salesman.buyer-acces')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-user')}</Link>
+          <Link to="/">{t('salesman.buyer-user')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-polit')}</Link>
+          <Link to="/">{t('salesman.buyer-polit')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-rules')}</Link>
+          <Link to="/">{t('salesman.buyer-rules')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>{t('salesman.buyer-google')}</Link>
+          <Link to="/">{t('salesman.buyer-google')}</Link>
         </div>
         <div className="buyer-link__item">
-          <Link to={'!#'}>
+          <Link to="/">
             {t('salesman.buyer-bonus')} <br />
             PROM
           </Link>
