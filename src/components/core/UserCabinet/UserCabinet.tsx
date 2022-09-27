@@ -34,9 +34,9 @@ const UserCabinet: React.FC = () => {
         onMouseLeave={() => setActive(!active)}
         className={active ? 'user-about-active' : 'user-about-hidden'}
       >
-        {isAuthBool && user ? (
+        {isAuthBool ? (
           <div className="user-about-name">
-            {user.name} {user.lastName}{' '}
+            {user.name} {user.lastName}
           </div>
         ) : (
           ''

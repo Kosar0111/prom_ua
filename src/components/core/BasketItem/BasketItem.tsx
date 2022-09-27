@@ -1,20 +1,22 @@
 import { FC } from 'react'
 
 import { BasketItemCount } from '../BasketItemCount/BasketItemCount'
-import { useAppDispatch } from '../../..//hooks/hooks'
 import './BasketItem.css'
 import { IGood } from '../../../model/interfaceUser'
 import bucet from '../../../assets/img/bucet.png'
-import { removeProduct } from '../../../store/basketSlice'
+import { useAppSelector, useAppDispatch } from '../../../hooks/hooks'
+import { deleteGood } from '../../../store/basketSlice'
 
 type BasketItemProp = IGood
 
 export const BasketItem: FC<BasketItemProp> = item => {
   const { id, price, img, title, nameShop, count } = item
+  const idUser = useAppSelector(state => state.auth.users.id)
+  console.log(idUser)
 
   const dispatch = useAppDispatch()
   const deleteItem = () => {
-    dispatch(removeProduct(id))
+    dispatch(deleteGood({ idUser, id }))
   }
   return (
     <div className="basket-item__wrapper">

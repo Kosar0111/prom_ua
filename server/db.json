@@ -7,24 +7,10 @@
       "lastName": "Локтев",
       "email": "kosar0111@gmail.com",
       "password": "111111",
-      "phone": "0637209239",
-      "orders": [
-        {
-          "hjdfjfhhjfhfddhjfd": "jfdfhfdhfdhfdhjfhjfdd"
-        }
-      ]
-    },
-    {
-      "token": "b02e799d-ed44-485e-974f-8f190194bb00",
-      "id": "ecc89aa7-131a-4c97-bdbb-f4b5f08ce212",
-      "name": "Константин",
-      "lastName": "Локтев",
-      "email": "kasar.05@mail.ru",
-      "password": "000000",
-      "phone": "0637209239",
-      "orders": [{ "fdfdjdhfhdhhfdhjfdhfdhj": "kfjdkjffdjdjfdfjdjf" }]
+      "phone": "0637209239"
     }
   ],
+  "order": [],
   "goods": [
     {
       "id": "1",

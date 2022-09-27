@@ -6,9 +6,12 @@ export interface IUser {
   email: string
   password: string
   phone: string
-  orders: IGood[]
 }
-
+export interface IOderGoods {
+  id: string
+  count: number
+  price: number
+}
 export interface IGood {
   id: string
   img: string
@@ -17,4 +20,8 @@ export interface IGood {
   count?: any
   city: string
   nameShop: string
+}
+export interface IOrder {
+  idUser: string
+  ownBasket: IOderGoods[]
 }

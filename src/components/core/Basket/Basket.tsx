@@ -1,11 +1,12 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import { BasketItem } from '../BasketItem/BasketItem'
 
 import arrLeft from '../../../assets/img/arrow-left.png'
-import { useAppSelector } from '../../../hooks/hooks'
+import { useAppSelector, useAppDispatch } from '../../../hooks/hooks'
 import './Basket.css'
+import { getOrder } from '../../../store/basketSlice'
 
 type BasketProps = {
   basketOpen: boolean
@@ -16,10 +17,17 @@ const modalBAsket: any = document.getElementById('modalBasket')
 
 export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
   const { items } = useAppSelector(state => state.basket)
+
   const { isAuthBool, register } = useAppSelector(state => state.auth)
+  const idUser = useAppSelector(state => state.auth.users.id)
+  const dispatch = useAppDispatch()
   const total = items.reduce((sum, item) => {
     return item.price * item.count + sum
   }, 0)
+
+  useEffect(() => {
+    dispatch(getOrder(idUser))
+  }, [dispatch])
 
   basketOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'scroll')
   if (basketOpen && (isAuthBool || register)) {

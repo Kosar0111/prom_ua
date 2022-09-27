@@ -30,8 +30,7 @@ const initialState: IUserSlice = {
     lastName: '',
     email: '',
     password: '',
-    phone: '',
-    orders: []
+    phone: ''
   }
 }
 
@@ -95,13 +94,12 @@ const authSlice = createSlice({
         lastName: '',
         email: '',
         password: '',
-        phone: '',
-        orders: []
+        phone: ''
       }
       state.isAuthBool = false
       state.register = false
       state.loading = false
-      document.cookie = ''
+      document.cookie = 'name='
     }
   },
 
