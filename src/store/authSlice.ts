@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import axios from 'axios'
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -65,7 +66,10 @@ export const registrUser = createAsyncThunk<IUser, ActionPayload>('users/registr
       password: value.password.trim(),
       phone: value.phone
     })
-
+    await axios.post('http://localhost:3001/order', {
+      id: resp.data.id,
+      basket: []
+    })
     return resp.data
   }
   throw new Error('Such user has already exist')
@@ -136,7 +140,7 @@ const authSlice = createSlice({
       state.register = true
       state.regError = false
       state.message = ''
-      authSlice.caseReducers.userLog(state, action)
+      authSlice.caseReducers.register(state, action)
       document.cookie = `name=${action.payload.token}`
     })
     builder.addCase(registrUser.rejected, state => {

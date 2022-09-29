@@ -13,11 +13,6 @@ interface IGoodslice {
 type AddGoodsType = {
   idUser: string
   id: string
-  city: string
-  price: number
-  img: string
-  title: string
-  nameShop: string
   count?: number
 }
 
@@ -33,33 +28,58 @@ const initialState: IGoodslice = {
   userId: '',
   items: []
 }
+type Basket = {
+  id: string
+  basket: [
+    {
+      id: number
+      count: number
+    }
+  ]
+}
 
-export const getOrder = createAsyncThunk('basket/getOrder', async (id: string) => {
-  const response = await axios.get<IGood[]>(`http://localhost:3001/order?${id}`)
-
-  return response.data
+export const getOrder = createAsyncThunk('basket/getOrder', async (idUser: string) => {
+  const response = await axios.get<Basket[]>(`http://localhost:3001/order/${idUser}`)
+  return response.data[0].basket
 })
-export const addGoods = createAsyncThunk<IGood[], AddGoodsType>(
-  'basket/addGoods',
-  async ({ idUser, id, city, price, nameShop, img, title }) => {
-    const response = await axios.get<IGood[]>(`http://localhost:3001/order?${idUser}`)
-    const res = response.data.find(el => el.id === id)
 
-    if (!res) {
-      const resp = await axios.post(`http://localhost:3001/order?${idUser}`, {
-        id: id,
-        city: city,
-        price: price,
-        nameShop: nameShop,
-        img: img,
-        title: title,
-        count: 1
+export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
+  'basket/addGoods',
+  async ({ idUser, id }) => {
+    const response = await axios.get<Basket[]>(`http://localhost:3001/order?${idUser}`)
+    const res = response.data[0].basket
+
+    if (res.length < 1) {
+      const resp = await axios.patch<Basket>(`http://localhost:3001/order/${idUser}`, {
+        basket: [{ id: id, count: 1 }]
       })
       return resp.data
-    } else {
-      const respPut = await axios.patch(`http://localhost:3001/order?${idUser}`)
-      res.count++
-      return respPut.data
+    } else if (res.length >= 1) {
+      const newCount = res.find(el => el.id.toString() === id)
+
+      if (newCount) {
+        const respo = await axios.patch(`http://localhost:3001/order/${idUser}`, {
+          basket: [
+            ...res.filter(el => el.id !== newCount.id),
+            {
+              id: newCount.id,
+              count: newCount.count + 1
+            }
+          ]
+        })
+        return respo.data
+      } else {
+        const response = await axios.patch(`http://localhost:3001/order/${idUser}`, {
+          basket: [
+            ...res,
+            {
+              id: id,
+              count: 1
+            }
+          ]
+        })
+        return response.data
+      }
     }
   }
 )
@@ -76,16 +96,21 @@ const basketSlice = createSlice({
   initialState,
   reducers: {
     allOrder: (state, action) => {
-      state.items = action.payload
+      if (action.payload) {
+        state.items = action.payload
+        console.log(action.payload)
+      } else return
     },
     addProduct: (state, action) => {
-      const findItem = state.items.find(el => el.id === action.payload.id)
-      if (findItem) {
-        findItem.count++
-      } else {
-        const tempProduct = { ...action.payload, count: 1 }
-        state.items.push(tempProduct)
-      }
+      console.log(action.payload)
+
+      // const findItem = state.items.find(el => el.id === action.payload.id)
+      // if (findItem) {
+      //   findItem.count++
+      // } else {
+      //   const tempProduct = { ...action.payload, count: 1 }
+      //   state.items.push(tempProduct)
+      // }
     },
     removeProduct: (state, action) => {
       state.items = state.items.filter(el => el.id !== action.payload)
@@ -126,7 +151,7 @@ const basketSlice = createSlice({
     builder.addCase(addGoods.fulfilled, (state, action) => {
       state.loading = false
       state.error = false
-      basketSlice.caseReducers.addProduct(state, action)
+      // basketSlice.caseReducers.addProduct(state, action)
     })
     builder.addCase(addGoods.rejected, state => {
       state.loading = false

@@ -74,7 +74,7 @@ export const HeaderSearch = () => {
             className="basket"
             onClick={() => setBasketOpen(!basketOpen)}
           />
-          {(items.length && (isAuthBool || register)) > 0 ? (
+          {items.length > 0 && (isAuthBool || register) ? (
             <span className="count-basket">{items.length}</span>
           ) : (
             ''

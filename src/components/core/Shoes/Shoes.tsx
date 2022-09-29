@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import './Shoes.css'
 import { IGood } from '../../../model/interfaceUser'
@@ -10,11 +10,12 @@ type ShoesProps = IGood
 export const Shoes: FC<ShoesProps> = good => {
   const { city, price, nameShop, img, title, id } = good
   const idUser = useAppSelector(state => state.auth.users.id)
-  console.log(idUser)
+  const [addBasket, setAddBasket] = useState(false)
 
   const dispatch = useAppDispatch()
   const orderGood = () => {
-    dispatch(addGoods({ idUser, city, price, nameShop, img, id, title }))
+    dispatch(addGoods({ idUser, id }))
+    setAddBasket(true)
   }
   return (
     <div className="shoes-container">
@@ -22,9 +23,13 @@ export const Shoes: FC<ShoesProps> = good => {
       <div className="shoes-title">{title}</div>
       <div className="shoes-city">{city}</div>
       <div className="shoes-price">{price} грн</div>
-      <button className="shoes-buy" onClick={orderGood}>
-        Купити
-      </button>
+      {!addBasket ? (
+        <button className="shoes-buy" onClick={orderGood}>
+          Купити
+        </button>
+      ) : (
+        <button className="shoes-buy-add">У кошику</button>
+      )}
       <div className="space"></div>
       <div className="shoes-shop">{nameShop}</div>
     </div>

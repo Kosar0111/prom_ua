@@ -1,0 +1,36 @@
+.filter-wrapper {
+  display: flex;
+  margin: 0 10px 10px;
+  padding-top: 10px;
+  align-items: center;
+  font-size: 1.25rem;
+  justify-content: space-around;
+}
+select {
+  margin-left: 10px;
+}
+.sort-city-el {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 5px;
+  border: 1px solid purple;
+  border-radius: 10px;
+  background-color: blueviolet;
+  color: white;
+  cursor: pointer;
+}
+.sort-city-el:hover {
+  border: 1px solid purple;
+  background-color: white;
+  color: blueviolet;
+}
+.sort-city-el-active {
+  display: inline-block;
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid purple;
+  background-color: white;
+  color: blueviolet;
+  cursor: pointer;
+}

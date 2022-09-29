@@ -48,7 +48,6 @@ const goodsSlice = createSlice({
       state.error = true
       state.view = false
       state.message = 'Something went wrong'
-      state.goods = []
     })
   }
 })

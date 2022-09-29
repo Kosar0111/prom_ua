@@ -12,7 +12,6 @@ type BasketItemProp = IGood
 export const BasketItem: FC<BasketItemProp> = item => {
   const { id, price, img, title, nameShop, count } = item
   const idUser = useAppSelector(state => state.auth.users.id)
-  console.log(idUser)
 
   const dispatch = useAppDispatch()
   const deleteItem = () => {

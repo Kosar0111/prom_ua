@@ -1,16 +1,34 @@
 {
   "users": [
     {
-      "token": "cea4ce72-8757-4a20-8033-335d4bc76741",
-      "id": "4cd95e86-f454-45b4-88d4-4b6dbceee66b",
+      "token": "b60ba8e5-07a9-4835-82a4-a67f07ab7cea",
+      "id": "362589c7-7da5-46ce-881f-3975ad8a8364",
       "name": "Константин",
       "lastName": "Локтев",
-      "email": "kosar0111@gmail.com",
+      "email": "kasar.05@mail.ru",
       "password": "111111",
       "phone": "0637209239"
     }
   ],
-  "order": [],
+  "order": [
+    {
+      "id": "362589c7-7da5-46ce-881f-3975ad8a8364",
+      "basket": [
+        {
+          "id": "4",
+          "count": 3
+        },
+        {
+          "id": "2",
+          "count": 2
+        },
+        {
+          "id": "3",
+          "count": 2
+        }
+      ]
+    }
+  ],
   "goods": [
     {
       "id": "1",
