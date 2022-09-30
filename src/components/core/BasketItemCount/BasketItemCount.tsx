@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import { useAppDispatch } from '../../..//hooks/hooks'
-import { increaseProduct, decreaseItem } from '../../../store/basketSlice'
+import { useAppDispatch, useAppSelector } from '../../..//hooks/hooks'
+import { increaseGood, decreaseGood } from '../../../store/basketSlice'
 import './BasketItemCount.css'
 
 type BasketItemCountProps = {
@@ -11,12 +11,13 @@ type BasketItemCountProps = {
 }
 
 export const BasketItemCount: FC<BasketItemCountProps> = ({ id, price, count }) => {
+  const idUser = useAppSelector(state => state.auth.users.id)
   const dispatch = useAppDispatch()
   const increase = () => {
-    dispatch(increaseProduct(id))
+    dispatch(increaseGood({ id, idUser }))
   }
   const decrease = () => {
-    dispatch(decreaseItem(id))
+    dispatch(decreaseGood({ id, idUser }))
   }
   return (
     <div className="bill">

@@ -99,6 +99,50 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
   }
 )
 
+export const increaseGood = createAsyncThunk<string, DeleteGoodsType>(
+  'basket/increaseGood',
+  async ({ id, idUser }) => {
+    const response = await axios.get<Basket[]>(`http://localhost:3001/order?${idUser}`)
+    const res = response.data[0].basket
+    const newCount = res.find(el => el.id.toString() === id)
+
+    if (newCount) {
+      await axios.patch(`http://localhost:3001/order/${idUser}`, {
+        basket: [
+          ...res.filter(el => el.id !== newCount.id),
+          {
+            id: newCount.id,
+            count: newCount.count + 1
+          }
+        ]
+      })
+    }
+    return id
+  }
+)
+
+export const decreaseGood = createAsyncThunk<string, DeleteGoodsType>(
+  'basket/decreaseGood',
+  async ({ id, idUser }) => {
+    const response = await axios.get<Basket[]>(`http://localhost:3001/order?${idUser}`)
+    const res = response.data[0].basket
+    const newCount = res.find(el => el.id.toString() === id)
+
+    if (newCount) {
+      await axios.patch(`http://localhost:3001/order/${idUser}`, {
+        basket: [
+          ...res.filter(el => el.id !== newCount.id),
+          {
+            id: newCount.id,
+            count: newCount.count - 1
+          }
+        ]
+      })
+    }
+    return id
+  }
+)
+
 export const deleteGood = createAsyncThunk<string, DeleteGoodsType>(
   'basket/deleteGood',
   async ({ id, idUser }) => {
@@ -137,7 +181,7 @@ const basketSlice = createSlice({
         findItem.count++
       }
     },
-    decreaseItem: (state, action) => {
+    decreaseProduct: (state, action) => {
       const findItem = state.items.find(el => el.id === action.payload)
       if (findItem) {
         findItem.count--
@@ -175,6 +219,36 @@ const basketSlice = createSlice({
       state.message = 'Something went wrong'
     })
 
+    builder.addCase(increaseGood.pending, state => {
+      state.loading = true
+      state.error = false
+    })
+    builder.addCase(increaseGood.fulfilled, (state, action) => {
+      state.loading = false
+      state.error = false
+      basketSlice.caseReducers.increaseProduct(state, action)
+    })
+    builder.addCase(increaseGood.rejected, state => {
+      state.loading = false
+      state.error = true
+      state.message = 'Something went wrong'
+    })
+
+    builder.addCase(decreaseGood.pending, state => {
+      state.loading = true
+      state.error = false
+    })
+    builder.addCase(decreaseGood.fulfilled, (state, action) => {
+      state.loading = false
+      state.error = false
+      basketSlice.caseReducers.decreaseProduct(state, action)
+    })
+    builder.addCase(decreaseGood.rejected, state => {
+      state.loading = false
+      state.error = true
+      state.message = 'Something went wrong'
+    })
+
     builder.addCase(deleteGood.pending, state => {
       state.loading = true
       state.error = false
@@ -192,5 +266,5 @@ const basketSlice = createSlice({
   }
 })
 
-export const { addProduct, removeProduct, increaseProduct, decreaseItem } = basketSlice.actions
+export const { addProduct, removeProduct, increaseProduct, decreaseProduct } = basketSlice.actions
 export default basketSlice.reducer

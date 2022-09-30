@@ -15,20 +15,20 @@
       "id": "362589c7-7da5-46ce-881f-3975ad8a8364",
       "basket": [
         {
-          "id": "1",
-          "count": 1
+          "id": "4",
+          "count": 3
         },
         {
           "id": "3",
-          "count": 1
+          "count": 4
         },
         {
-          "id": "4",
-          "count": 1
+          "id": "1",
+          "count": 0
         },
         {
           "id": "2",
-          "count": 1
+          "count": 0
         }
       ]
     }
