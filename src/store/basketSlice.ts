@@ -32,7 +32,7 @@ type Basket = {
   id: string
   basket: [
     {
-      id: number
+      id: string
       count: number
     }
   ]
@@ -40,7 +40,22 @@ type Basket = {
 
 export const getOrder = createAsyncThunk('basket/getOrder', async (idUser: string) => {
   const response = await axios.get<Basket[]>(`http://localhost:3001/order/${idUser}`)
-  return response.data[0].basket
+  const idGood = response.data[0].basket
+
+  const listGood = idGood.map(async el => {
+    return await axios.get<IGood>(`http://localhost:3001/goods/${el.id}`).then(res => res.data)
+  })
+
+  const resultListGood = await Promise.all(listGood)
+  resultListGood.map(x =>
+    idGood.map(y => {
+      if (y.id === x.id) {
+        x.count = y.count
+      }
+      return x
+    })
+  )
+  return resultListGood
 })
 
 export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
@@ -69,7 +84,7 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
         })
         return respo.data
       } else {
-        const response = await axios.patch(`http://localhost:3001/order/${idUser}`, {
+        const responseUpdate = await axios.patch(`http://localhost:3001/order/${idUser}`, {
           basket: [
             ...res,
             {
@@ -78,7 +93,7 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
             }
           ]
         })
-        return response.data
+        return responseUpdate.data
       }
     }
   }
@@ -87,7 +102,11 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
 export const deleteGood = createAsyncThunk<string, DeleteGoodsType>(
   'basket/deleteGood',
   async ({ id, idUser }) => {
-    await axios.delete(`http://localhost:3001/order/${idUser}`)
+    const response = await axios.get<Basket[]>(`http://localhost:3001/order?${idUser}`)
+    const res = response.data[0].basket
+    await axios.patch(`http://localhost:3001/order/${idUser}`, {
+      basket: [...res.filter(el => el.id !== id)]
+    })
     return id
   }
 )
@@ -98,19 +117,16 @@ const basketSlice = createSlice({
     allOrder: (state, action) => {
       if (action.payload) {
         state.items = action.payload
-        console.log(action.payload)
       } else return
     },
     addProduct: (state, action) => {
-      console.log(action.payload)
-
-      // const findItem = state.items.find(el => el.id === action.payload.id)
-      // if (findItem) {
-      //   findItem.count++
-      // } else {
-      //   const tempProduct = { ...action.payload, count: 1 }
-      //   state.items.push(tempProduct)
-      // }
+      const findItem = state.items.find(el => el.id === action.payload.id)
+      if (findItem) {
+        findItem.count++
+      } else {
+        const tempProduct = { ...action.payload, count: 1 }
+        state.items.push(tempProduct)
+      }
     },
     removeProduct: (state, action) => {
       state.items = state.items.filter(el => el.id !== action.payload)
@@ -151,7 +167,7 @@ const basketSlice = createSlice({
     builder.addCase(addGoods.fulfilled, (state, action) => {
       state.loading = false
       state.error = false
-      // basketSlice.caseReducers.addProduct(state, action)
+      basketSlice.caseReducers.addProduct(state, action)
     })
     builder.addCase(addGoods.rejected, state => {
       state.loading = false
