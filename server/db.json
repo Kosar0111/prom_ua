@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "token": "b60ba8e5-07a9-4835-82a4-a67f07ab7cea",
-      "id": "362589c7-7da5-46ce-881f-3975ad8a8364",
+      "token": "232b702b-2ad6-466c-9b95-c8947bb4144e",
+      "id": "e9db6ef3-4544-44ee-9fe3-844990ebd638",
       "name": "Константин",
       "lastName": "Локтев",
       "email": "kasar.05@mail.ru",
@@ -12,11 +12,39 @@
   ],
   "order": [
     {
-      "id": "362589c7-7da5-46ce-881f-3975ad8a8364",
+      "id": "e9db6ef3-4544-44ee-9fe3-844990ebd638",
       "basket": [
         {
           "id": "4",
-          "count": 3
+          "count": 1
+        },
+        {
+          "id": "3",
+          "count": 1
+        },
+        {
+          "id": "2",
+          "count": 1
+        },
+        {
+          "id": "1",
+          "count": 1
+        },
+        {
+          "id": "5",
+          "count": 1
+        },
+        {
+          "id": "6",
+          "count": 1
+        },
+        {
+          "id": "7",
+          "count": 1
+        },
+        {
+          "id": "8",
+          "count": 1
         }
       ]
     }

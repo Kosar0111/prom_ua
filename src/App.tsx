@@ -21,6 +21,7 @@ export const App = () => {
     if (document.cookie !== 'name=') {
       dispatch(isAuth(document.cookie))
     }
+    return
   }, [dispatch])
 
   useEffect(() => {

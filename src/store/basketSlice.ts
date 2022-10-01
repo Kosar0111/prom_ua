@@ -55,6 +55,7 @@ export const getOrder = createAsyncThunk('basket/getOrder', async (idUser: strin
       return x
     })
   )
+
   return resultListGood
 })
 
@@ -82,6 +83,7 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
             }
           ]
         })
+
         return respo.data
       } else {
         const responseUpdate = await axios.patch(`http://localhost:3001/order/${idUser}`, {
@@ -93,6 +95,7 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
             }
           ]
         })
+
         return responseUpdate.data
       }
     }
@@ -164,13 +167,7 @@ const basketSlice = createSlice({
       } else return
     },
     addProduct: (state, action) => {
-      const findItem = state.items.find(el => el.id === action.payload.id)
-      if (findItem) {
-        findItem.count++
-      } else {
-        const tempProduct = { ...action.payload, count: 1 }
-        state.items.push(tempProduct)
-      }
+      state.items.push(action.payload.basket)
     },
     removeProduct: (state, action) => {
       state.items = state.items.filter(el => el.id !== action.payload)

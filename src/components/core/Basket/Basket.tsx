@@ -27,7 +27,7 @@ export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
 
   useEffect(() => {
     dispatch(getOrder(idUser))
-  }, [dispatch])
+  }, [idUser, dispatch])
 
   basketOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'scroll')
   if (basketOpen && (isAuthBool || register)) {

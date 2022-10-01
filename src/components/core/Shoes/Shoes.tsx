@@ -15,6 +15,7 @@ export const Shoes: FC<ShoesProps> = good => {
   const dispatch = useAppDispatch()
   const orderGood = () => {
     dispatch(addGoods({ idUser, id }))
+
     setAddBasket(true)
   }
   return (

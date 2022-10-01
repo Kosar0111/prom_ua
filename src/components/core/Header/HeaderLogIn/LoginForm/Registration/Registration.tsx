@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import '../../../../../../helpers/i18next'
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
 
-import { registrUser } from '../../../../../../store/authSlice'
+import { registerUser } from '../../../../../../store/authSlice'
 
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
 import load from '../../../../../../assets/img/loading.gif'
@@ -35,7 +35,7 @@ export const Registration: React.FC<IRegistrationProps> = ({
   const { register, message, regError, loading } = useAppSelector(state => state.auth)
 
   const onSubmit = (values: FormModel) => {
-    dispatch(registrUser(values))
+    dispatch(registerUser(values))
     formik.resetForm()
     register && setRegistrationOpen(!registrationOpen)
   }
