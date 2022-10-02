@@ -1,6 +1,9 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const userRegister: any = (value: any) => {
+import { IUser } from '../model/interfaceUser'
+type ActionPayload = Record<string, string>
+
+export const userRegister = (value: ActionPayload): IUser => {
   return {
     token: uuidv4(),
     id: uuidv4(),

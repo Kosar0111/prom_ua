@@ -7,6 +7,7 @@ import { routes } from './routes/route'
 
 import './App.css'
 import { isAuth } from './store/authSlice'
+import { getGoods } from './store/goodsSlice'
 
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -22,6 +23,10 @@ export const App = () => {
       dispatch(isAuth(document.cookie))
     }
     return
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getGoods())
   }, [dispatch])
 
   useEffect(() => {

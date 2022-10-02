@@ -11,21 +11,32 @@ import { FilterCompany } from '../Filter/FilterCompany/FilterCompany'
 import { SortPrice } from '../Filter/SortPrice/SortPrice'
 
 export const ShoesList: FC = () => {
+  const goods = useAppSelector(state => state.goods.goods)
+  const [sortPrice, setSortPrice] = useState('')
+  const [goodsAll, setGoodsAll] = useState(goods)
+
   const dispatch = useAppDispatch()
+
   useEffect(() => {
     dispatch(getGoods())
   }, [dispatch])
-  const goods = useAppSelector(state => state.goods.goods)
-  const [goodsAll, SetGoodsAll] = useState(goods)
-  console.log(goods, goodsAll)
 
-  // const [sortCity, setSortCity] = useState('')
-  // const [sortCompany, setSortCompany] = useState('')
-  const [sortPrice, setSortPrice] = useState('')
+  const chooseCity = (city: string) => {
+    if (city === 'All') {
+      setGoodsAll(goods)
+    } else setGoodsAll(goods.filter(el => el.city === city))
+  }
+
+  const chooseCompany = (company: string) => {
+    if (company === 'All') {
+      setGoodsAll(goods)
+    } else setGoodsAll(goodsAll.filter(el => el.nameShop === company))
+  }
+
   const priceSort = (sort: string) => {
     setSortPrice(sort)
-    SetGoodsAll(
-      goods.slice().sort((a, b) => {
+    setGoodsAll(
+      goodsAll.slice().sort((a, b) => {
         return sort === 'lowest'
           ? a.price > b.price
             ? 1
@@ -44,12 +55,12 @@ export const ShoesList: FC = () => {
   return (
     <div className="shoes-wrapper">
       <div className="filter-wrapper">
-        <FilterCity />
+        <FilterCity chooseCity={chooseCity} goodsAll={goodsAll} />
         <SortPrice sortPrice={sortPrice} priceSort={priceSort} />
-        <FilterCompany />
+        <FilterCompany chooseCompany={chooseCompany} goodsAll={goodsAll} />
       </div>
       <div className="shoes-list">
-        {goods.map(good => (
+        {goodsAll.map(good => (
           <Shoes key={good.id} {...good} />
         ))}
       </div>
