@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "token": "232b702b-2ad6-466c-9b95-c8947bb4144e",
-      "id": "e9db6ef3-4544-44ee-9fe3-844990ebd638",
+      "token": "4b3e42d7-5926-4c72-84d6-dc26750b6683",
+      "id": "36784431-b35d-40cb-afcc-4bca17198ac7",
       "name": "Константин",
       "lastName": "Локтев",
       "email": "kasar.05@mail.ru",
@@ -12,41 +12,8 @@
   ],
   "order": [
     {
-      "id": "e9db6ef3-4544-44ee-9fe3-844990ebd638",
-      "basket": [
-        {
-          "id": "4",
-          "count": 1
-        },
-        {
-          "id": "3",
-          "count": 1
-        },
-        {
-          "id": "2",
-          "count": 1
-        },
-        {
-          "id": "1",
-          "count": 1
-        },
-        {
-          "id": "5",
-          "count": 1
-        },
-        {
-          "id": "6",
-          "count": 1
-        },
-        {
-          "id": "7",
-          "count": 1
-        },
-        {
-          "id": "8",
-          "count": 1
-        }
-      ]
+      "id": "36784431-b35d-40cb-afcc-4bca17198ac7",
+      "basket": []
     }
   ],
   "goods": [

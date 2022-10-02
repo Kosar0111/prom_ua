@@ -59,22 +59,22 @@ export const getOrder = createAsyncThunk('basket/getOrder', async (idUser: strin
   return resultListGood
 })
 
-export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
+export const addGoods = createAsyncThunk<any, AddGoodsType>(
   'basket/addGoods',
   async ({ idUser, id }) => {
     const response = await axios.get<Basket[]>(`http://localhost:3001/order?${idUser}`)
     const res = response.data[0].basket
+    console.log(res.length)
 
     if (res.length < 1) {
-      const resp = await axios.patch<Basket>(`http://localhost:3001/order/${idUser}`, {
+      await axios.patch<Basket>(`http://localhost:3001/order/${idUser}`, {
         basket: [{ id: id, count: 1 }]
       })
-      return resp.data
     } else if (res.length >= 1) {
       const newCount = res.find(el => el.id.toString() === id)
 
       if (newCount) {
-        const respo = await axios.patch(`http://localhost:3001/order/${idUser}`, {
+        await axios.patch(`http://localhost:3001/order/${idUser}`, {
           basket: [
             ...res.filter(el => el.id !== newCount.id),
             {
@@ -83,10 +83,8 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
             }
           ]
         })
-
-        return respo.data
       } else {
-        const responseUpdate = await axios.patch(`http://localhost:3001/order/${idUser}`, {
+        await axios.patch(`http://localhost:3001/order/${idUser}`, {
           basket: [
             ...res,
             {
@@ -95,10 +93,25 @@ export const addGoods = createAsyncThunk<Basket, AddGoodsType>(
             }
           ]
         })
-
-        return responseUpdate.data
       }
     }
+    const responseGoodAll = await axios.get<Basket[]>(`http://localhost:3001/order?${idUser}`)
+    const resAll = responseGoodAll.data[0].basket
+    const listGood = resAll.map(async el => {
+      return await axios.get<IGood>(`http://localhost:3001/goods/${el.id}`).then(res => res.data)
+    })
+    console.log(res)
+
+    const resultListGood = await Promise.all(listGood)
+    resultListGood.map(x =>
+      resAll.map(y => {
+        if (y.id === x.id) {
+          x.count = y.count
+        }
+        return x
+      })
+    )
+    return resultListGood
   }
 )
 
@@ -167,7 +180,7 @@ const basketSlice = createSlice({
       } else return
     },
     addProduct: (state, action) => {
-      state.items.push(action.payload.basket)
+      state.items = action.payload.flat()
     },
     removeProduct: (state, action) => {
       state.items = state.items.filter(el => el.id !== action.payload)
