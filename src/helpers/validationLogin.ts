@@ -1,10 +1,10 @@
 import * as yup from 'yup'
 
 export const validationSchema = yup.object({
-  email: yup.string().email('Email is invalid').required('Email is required'),
+  email: yup.string().email('Email не корректный').required('Email обязательно'),
   password: yup
     .string()
-    .min(6, 'Must be 3 characters at least')
-    .max(20, 'Too long password')
-    .required('Pasword is required field!')
+    .min(6, 'Должноо быть как минимум 3 буквы')
+    .max(20, 'Пароль слишком длинный')
+    .required('Обязательное поле!')
 })

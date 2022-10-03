@@ -1,12 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { v4 as uuidv4 } from 'uuid'
-
 import { instance } from '../api/api-clint'
-
+import { userRegister } from '../helpers/user'
 import { IUser } from '../model/interfaceUser'
-
 interface IUserSlice {
   users: IUser
   loading: boolean
@@ -45,41 +42,33 @@ type FormModel = {
 export const logIn = createAsyncThunk('users/getUsers', async (client: FormModel) => {
   const response = await instance.get<IUser[]>('http://localhost:3001/users')
   const auth = response.data.find(
-    user => user.email === client.email && user.password === client.password
+    (user) => user.email === client.email && user.password === client.password
   )
 
   if (auth) return auth
-  throw new Error(' You entered incorrect data')
+  throw new Error(' Вы ввели не корректные данные')
 })
 
 export const registerUser = createAsyncThunk<IUser, ActionPayload>(
   'users/register',
-  async value => {
+  async (value) => {
     const response = await instance.get<IUser[]>('http://localhost:3001/users')
-    const res = response.data.find(user => user.email === value.email)
+    const res = response.data.find((user) => user.email === value.email)
 
     if (!res) {
-      const resp = await instance.post('http://localhost:3001/users', {
-        token: uuidv4(),
-        id: uuidv4(),
-        name: value.name.trim(),
-        lastName: value.lastName.trim(),
-        email: value.email.trim(),
-        password: value.password.trim(),
-        phone: value.phone
-      })
+      const resp = await instance.post('http://localhost:3001/users', userRegister(value))
       await axios.post('http://localhost:3001/order', {
         id: resp.data.id,
         basket: []
       })
       return resp.data
     }
-    throw new Error('Such user has already exist')
+    throw new Error('Такой пользователь уже существует')
   }
 )
 export const isAuth = createAsyncThunk('isAuth/getUsers', async (cookie: string) => {
   const response = await instance.get<IUser[]>('http://localhost:3001/users')
-  const userIsAuth: IUser = response.data.filter(el => 'name=' + el.token === cookie)[0]
+  const userIsAuth: IUser = response.data.filter((el) => 'name=' + el.token === cookie)[0]
 
   return userIsAuth
 })
@@ -93,7 +82,7 @@ const authSlice = createSlice({
     userLog: (state, action) => {
       state.users = action.payload
     },
-    logOut: state => {
+    logOut: (state) => {
       state.users = {
         id: '',
         token: '',
@@ -110,8 +99,8 @@ const authSlice = createSlice({
     }
   },
 
-  extraReducers: builder => {
-    builder.addCase(logIn.pending, state => {
+  extraReducers: (builder) => {
+    builder.addCase(logIn.pending, (state) => {
       state.loading = true
       state.authError = false
       state.message = ''
@@ -125,14 +114,14 @@ const authSlice = createSlice({
       state.authError = false
       state.message = ''
     })
-    builder.addCase(logIn.rejected, state => {
+    builder.addCase(logIn.rejected, (state) => {
       state.loading = false
       state.isAuthBool = false
       state.authError = true
-      state.message = 'Something went wrong'
+      state.message = 'Что-то пошло не так'
     })
 
-    builder.addCase(registerUser.pending, state => {
+    builder.addCase(registerUser.pending, (state) => {
       state.loading = true
       state.register = false
       state.regError = false
@@ -146,21 +135,21 @@ const authSlice = createSlice({
       authSlice.caseReducers.register(state, action)
       document.cookie = `name=${action.payload.token}`
     })
-    builder.addCase(registerUser.rejected, state => {
+    builder.addCase(registerUser.rejected, (state) => {
       state.loading = false
       state.regError = true
       state.register = false
-      state.message = 'You cant register, such email has already exists'
+      state.message = 'Вы не можете зарегистрироваться , такой e-mail уже существует'
     })
 
-    builder.addCase(isAuth.pending, state => {
+    builder.addCase(isAuth.pending, (state) => {
       state.loading = true
     })
     builder.addCase(isAuth.fulfilled, (state, action: PayloadAction<IUser>) => {
       state.isAuthBool = true
       authSlice.caseReducers.userLog(state, action)
     })
-    builder.addCase(isAuth.rejected, state => {
+    builder.addCase(isAuth.rejected, (state) => {
       state.loading = false
       state.isAuthBool = false
     })

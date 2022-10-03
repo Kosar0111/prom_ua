@@ -1,10 +1,9 @@
-import './AboutUs.css'
-import React from 'react'
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import '../../../../../helpers/i18next'
 
-export const AboutUs: React.FC = () => {
+export const AboutUs: FC = () => {
   const { t } = useTranslation()
   return (
     <div>

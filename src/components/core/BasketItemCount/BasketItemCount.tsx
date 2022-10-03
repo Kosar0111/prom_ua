@@ -11,7 +11,7 @@ type BasketItemCountProps = {
 }
 
 export const BasketItemCount: FC<BasketItemCountProps> = ({ id, price, count }) => {
-  const idUser = useAppSelector(state => state.auth.users.id)
+  const idUser = useAppSelector((state) => state.auth.users.id)
   const dispatch = useAppDispatch()
   const increase = () => {
     dispatch(increaseGood({ id, idUser }))

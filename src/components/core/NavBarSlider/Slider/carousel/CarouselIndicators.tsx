@@ -12,10 +12,10 @@ export const CarouselIndicators: React.FC<CarouselIndicatorsProps> = ({
   switchIndex
 }) => {
   return (
-    <div className="caurosel-indicators">
+    <div className="carousel-indicators">
       {sliders.map((_, index) => (
         <button
-          className={`carousel-indecator-item${currentIndex === index ? 'active' : ''}`}
+          className={`carousel-indicator-item${currentIndex === index ? 'active' : ''}`}
           key={index}
           onClick={() => switchIndex(index)}
         ></button>

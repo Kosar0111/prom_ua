@@ -2,26 +2,24 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ReactTooltip from 'react-tooltip'
 
+import './HeaderLogin.css'
 import emoji from '../../../../assets/img/emoji.png'
-
 import { useAppSelector } from '../../../../hooks/hooks'
-
 import '../../../../helpers/i18next'
 import UserCabinet from '../../UserCabinet/UserCabinet'
 
 import { LoginForm } from './LoginForm/LoginForm'
-import './HeaderLogin.css'
 
 type changeLanguage = (lang: string) => void
 export const HeaderLogin = () => {
   const [tooltip, showTooltip] = useState(true)
   const { t, i18n } = useTranslation()
-  const changeLanguage: changeLanguage = lang => {
+  const changeLanguage: changeLanguage = (lang) => {
     i18n.changeLanguage(lang)
   }
   const langu = localStorage.getItem('i18nextLng')
 
-  const { isAuthBool, register } = useAppSelector(state => state.auth)
+  const { isAuthBool, register } = useAppSelector((state) => state.auth)
   return (
     <div className="header-login">
       <div className="language">

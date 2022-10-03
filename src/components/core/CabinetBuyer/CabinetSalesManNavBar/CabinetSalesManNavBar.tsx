@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import './CabinetSalesManNavBar.css'
 
 export const CabinetSalesManNavBar: FC = () => {
   return (

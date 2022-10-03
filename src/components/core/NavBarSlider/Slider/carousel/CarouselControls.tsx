@@ -7,10 +7,10 @@ type ICarouselControlsProps = {
 export const CarouselControls: React.FC<ICarouselControlsProps> = ({ prev, next }) => {
   return (
     <div>
-      <div className="caurosel-control left" onClick={prev}>
+      <div className="carousel-control left" onClick={prev}>
         Prev
       </div>
-      <div className="caurosel-control right" onClick={next}>
+      <div className="carousel-control right" onClick={next}>
         Next
       </div>
     </div>

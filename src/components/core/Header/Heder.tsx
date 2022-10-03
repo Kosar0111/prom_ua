@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
+
 import '../../../helpers/i18next'
 import './Header.css'
-
 import photo from '../../../assets/img/photo.jpeg'
 
 import { HeaderLogin } from './HeaderLogIn/HeaderLogin'

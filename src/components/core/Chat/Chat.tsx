@@ -1,6 +1,6 @@
-import './Chat.css'
 import React from 'react'
 
+import './Chat.css'
 import message from '../../../assets/img/message.png'
 
 export const Chat: React.FC = () => {

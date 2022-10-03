@@ -3,8 +3,6 @@ import { Outlet } from 'react-router-dom'
 
 import { CabinetSalesManNavBar } from '../CabinetBuyer/CabinetSalesManNavBar/CabinetSalesManNavBar'
 
-import './CabinetSalesMan.css'
-
 export const CabinetSalesMan: FC = () => {
   return (
     <div className="cabinet-buyer">

@@ -1,11 +1,10 @@
 import { FC, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
+import './Basket.css'
 import { BasketItem } from '../BasketItem/BasketItem'
-
 import arrLeft from '../../../assets/img/arrow-left.png'
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks'
-import './Basket.css'
 import { getOrder } from '../../../store/basketSlice'
 
 type BasketProps = {
@@ -16,10 +15,10 @@ type BasketProps = {
 const modalBAsket: any = document.getElementById('modalBasket')
 
 export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
-  const { items } = useAppSelector(state => state.basket)
+  const { items } = useAppSelector((state) => state.basket)
 
-  const { isAuthBool, register } = useAppSelector(state => state.auth)
-  const idUser = useAppSelector(state => state.auth.users.id)
+  const { isAuthBool, register } = useAppSelector((state) => state.auth)
+  const idUser = useAppSelector((state) => state.auth.users.id)
   const dispatch = useAppDispatch()
   const total = items.reduce((sum, item) => {
     return item.price * item.count + sum
@@ -27,14 +26,14 @@ export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
 
   useEffect(() => {
     dispatch(getOrder(idUser))
-  }, [idUser, dispatch, items])
+  }, [dispatch])
 
   basketOpen ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'scroll')
   if (basketOpen && (isAuthBool || register)) {
     return createPortal(
       <>
         <div className="basket-wrapper" onClick={() => setBasketOpen(!basketOpen)}></div>
-        <div className="basket__modal" onClick={e => e.stopPropagation()}>
+        <div className="basket__modal" onClick={(e) => e.stopPropagation()}>
           <div className="basket__header">
             <img
               src={arrLeft}
@@ -57,7 +56,7 @@ export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
             </div>
           ) : (
             <div className="basket__main">
-              {items.map(item => (
+              {items.map((item) => (
                 <BasketItem key={item.id} {...item} />
               ))}
               <div className="puy-oder">
@@ -77,7 +76,7 @@ export const Basket: FC<BasketProps> = ({ basketOpen, setBasketOpen }) => {
     return createPortal(
       <>
         <div className="basket-wrapper" onClick={() => setBasketOpen(!basketOpen)}></div>
-        <div className="basket__modal" onClick={e => e.stopPropagation()}>
+        <div className="basket__modal" onClick={(e) => e.stopPropagation()}>
           <div className="basket__header">
             <img
               src={arrLeft}

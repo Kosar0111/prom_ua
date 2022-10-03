@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 import { CabinetCompany } from '../../core/CabinetCompany/CabinetCompany'
 import { Chat } from '../../core/Chat/Chat'

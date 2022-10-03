@@ -11,7 +11,7 @@ import { FilterCompany } from '../Filter/FilterCompany/FilterCompany'
 import { SortPrice } from '../Filter/SortPrice/SortPrice'
 
 export const ShoesList: FC = () => {
-  const goods = useAppSelector(state => state.goods.goods)
+  const goods = useAppSelector((state) => state.goods.goods)
   const [sortPrice, setSortPrice] = useState('')
   const [goodsAll, setGoodsAll] = useState(goods)
 
@@ -24,13 +24,13 @@ export const ShoesList: FC = () => {
   const chooseCity = (city: string) => {
     if (city === 'All') {
       setGoodsAll(goods)
-    } else setGoodsAll(goods.filter(el => el.city === city))
+    } else setGoodsAll(goods.filter((el) => el.city === city))
   }
 
   const chooseCompany = (company: string) => {
     if (company === 'All') {
       setGoodsAll(goods)
-    } else setGoodsAll(goodsAll.filter(el => el.nameShop === company))
+    } else setGoodsAll(goodsAll.filter((el) => el.nameShop === company))
   }
 
   const priceSort = (sort: string) => {
@@ -55,12 +55,12 @@ export const ShoesList: FC = () => {
   return (
     <div className="shoes-wrapper">
       <div className="filter-wrapper">
-        <FilterCity chooseCity={chooseCity} goodsAll={goodsAll} />
+        <FilterCity chooseCity={chooseCity} goodsAll={goods} />
         <SortPrice sortPrice={sortPrice} priceSort={priceSort} />
         <FilterCompany chooseCompany={chooseCompany} goodsAll={goodsAll} />
       </div>
       <div className="shoes-list">
-        {goodsAll.map(good => (
+        {goodsAll.map((good) => (
           <Shoes key={good.id} {...good} />
         ))}
       </div>

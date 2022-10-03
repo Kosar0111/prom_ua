@@ -1,9 +1,10 @@
-import './Partners.css'
+import { FC } from 'react'
+
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import '../../../../../helpers/i18next'
 
-export const Partners: React.FC = () => {
+export const Partners: FC = () => {
   const { t } = useTranslation()
   return (
     <div>

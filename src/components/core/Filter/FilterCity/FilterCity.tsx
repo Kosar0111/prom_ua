@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 
 import './FilterCity.css'
-import { useAppSelector } from '../../../../hooks/hooks'
 import { IGood } from '../../../../model/interfaceUser'
 
 type FilterCityProp = {
@@ -10,8 +9,8 @@ type FilterCityProp = {
 }
 
 export const FilterCity: FC<FilterCityProp> = ({ goodsAll, chooseCity }) => {
-  const goods = useAppSelector(state => state.goods.goods)
-  const city = goods.map(el => el.city)
+  const goods = goodsAll
+  const city = goods.map((el) => el.city)
   const cityQni = Array.from(new Set(city))
   const [state, setState] = useState('')
 
@@ -28,7 +27,7 @@ export const FilterCity: FC<FilterCityProp> = ({ goodsAll, chooseCity }) => {
         <div
           className={state === el ? 'sort-city-el-active' : 'sort-city-el'}
           key={i}
-          onClick={e => chooseCity(el)}
+          onClick={() => chooseCity(el)}
           onMouseEnter={() => setState(el)}
         >
           {el}

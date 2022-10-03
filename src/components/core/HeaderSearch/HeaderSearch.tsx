@@ -40,12 +40,12 @@ const options = [
   }
 ]
 export const HeaderSearch = () => {
-  const { isAuthBool, register } = useAppSelector(state => state.auth)
-  const { items } = useAppSelector(state => state.basket)
+  const { isAuthBool, register } = useAppSelector((state) => state.auth)
+  const { items } = useAppSelector((state) => state.basket)
   const [basketOpen, setBasketOpen] = useState(false)
   const { t } = useTranslation()
   return (
-    <div className="search__wraper">
+    <div className="search__wrapper">
       <div className="search">
         <Link to="/" className="search__logo">
           <img src={herb} alt="logo" className="logo" />

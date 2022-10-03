@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { FC } from 'react'
 import './Registration.css'
 import { createPortal } from 'react-dom'
 import { useFormik, FormikProps } from 'formik'
@@ -6,9 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 import '../../../../../../helpers/i18next'
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
-
 import { registerUser } from '../../../../../../store/authSlice'
-
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
 import load from '../../../../../../assets/img/loading.gif'
 interface IRegistrationProps {
@@ -26,13 +25,10 @@ type FormModel = {
 
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
-export const Registration: React.FC<IRegistrationProps> = ({
-  registrationOpen,
-  setRegistrationOpen
-}) => {
+export const Registration: FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const { register, message, regError, loading } = useAppSelector(state => state.auth)
+  const { register, message, regError, loading } = useAppSelector((state) => state.auth)
 
   const onSubmit = (values: FormModel) => {
     dispatch(registerUser(values))
@@ -56,7 +52,7 @@ export const Registration: React.FC<IRegistrationProps> = ({
     return createPortal(
       <>
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
-        <div className="registration__modal" onClick={e => e.stopPropagation()}>
+        <div className="registration__modal" onClick={(e) => e.stopPropagation()}>
           <form className="registration__modal-wrapper" onSubmit={formik.handleSubmit}>
             <div
               className="registration__modal-close"

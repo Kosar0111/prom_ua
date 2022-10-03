@@ -7,9 +7,9 @@ import { addGoods } from '../../../store/basketSlice'
 
 type ShoesProps = IGood
 
-export const Shoes: FC<ShoesProps> = good => {
+export const Shoes: FC<ShoesProps> = (good) => {
   const { city, price, nameShop, img, title, id } = good
-  const idUser = useAppSelector(state => state.auth.users.id)
+  const idUser = useAppSelector((state) => state.auth.users.id)
   const [addBasket, setAddBasket] = useState(false)
 
   const dispatch = useAppDispatch()
