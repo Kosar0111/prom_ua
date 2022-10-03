@@ -68,7 +68,7 @@ export const Registration: FC<IRegistrationProps> = ({ registrationOpen, setRegi
               <input
                 type="text"
                 className="registration__modal-input"
-                placeholder="Вашe імя"
+                placeholder={t('registration.registration-name')}
                 name="name"
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
@@ -81,7 +81,7 @@ export const Registration: FC<IRegistrationProps> = ({ registrationOpen, setRegi
               <input
                 type="text"
                 className="registration__modal-input"
-                placeholder="Вашe прізвище"
+                placeholder={t('registration.registration-last-name')}
                 name="lastName"
                 onBlur={formik.handleBlur}
                 value={formik.values.lastName}
@@ -105,7 +105,7 @@ export const Registration: FC<IRegistrationProps> = ({ registrationOpen, setRegi
               <input
                 type="password"
                 className="registration__modal-pass-input"
-                placeholder="Введіть ваш пароль"
+                placeholder={t('registration.registration-password')}
                 name="password"
                 onBlur={formik.handleBlur}
                 value={formik.values.password}

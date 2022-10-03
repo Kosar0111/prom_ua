@@ -12,8 +12,8 @@ import './UserCabinet.css'
 const UserCabinet: React.FC = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const user = useAppSelector(state => state.auth.users)
-  const { isAuthBool, register } = useAppSelector(state => state.auth)
+  const user = useAppSelector((state) => state.auth.users)
+  const { isAuthBool, register } = useAppSelector((state) => state.auth)
 
   const out = () => {
     dispatch(logOut())

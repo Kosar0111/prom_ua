@@ -26,6 +26,7 @@ export const ShoesList: FC = () => {
       setGoodsAll(goods)
     } else setGoodsAll(goods.filter((el) => el.city === city))
   }
+  console.log(goodsAll, goods)
 
   const chooseCompany = (company: string) => {
     if (company === 'All') {

@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import './Shoes.css'
 import { IGood } from '../../../model/interfaceUser'
@@ -11,6 +12,7 @@ export const Shoes: FC<ShoesProps> = (good) => {
   const { city, price, nameShop, img, title, id } = good
   const idUser = useAppSelector((state) => state.auth.users.id)
   const [addBasket, setAddBasket] = useState(false)
+  const { t } = useTranslation()
 
   const dispatch = useAppDispatch()
   const orderGood = () => {
@@ -25,10 +27,10 @@ export const Shoes: FC<ShoesProps> = (good) => {
       <div className="shoes-price">{price} грн</div>
       {!addBasket ? (
         <button className="shoes-buy" onClick={orderGood}>
-          Купити
+          {t('shoes.shoes-buy')}
         </button>
       ) : (
-        <button className="shoes-buy-add">У кошику</button>
+        <button className="shoes-buy-add">{t('shoes.shoes-buy-add')}</button>
       )}
       <div className="space"></div>
       <div className="shoes-shop">{nameShop}</div>

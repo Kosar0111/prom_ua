@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { useAppSelector } from '../../../../hooks/hooks'
 import { IGood } from '../../../../model/interfaceUser'
@@ -9,16 +10,17 @@ type FilterCompanyProp = {
 }
 
 export const FilterCompany: FC<FilterCompanyProp> = ({ chooseCompany, goodsAll }) => {
-  const goods = useAppSelector(state => state.goods.goods)
-  const company = goods.map(el => el.nameShop)
+  const { t } = useTranslation()
+  const goods = useAppSelector((state) => state.goods.goods)
+  const company = goods.map((el) => el.nameShop)
   const companyQni = Array.from(new Set(company))
   return (
     <div>
       <div className="sort-company">
-        Компанії:
-        <select onChange={e => chooseCompany(e.target.value)}>
+        {t('sort-company.company')}
+        <select onChange={(e) => chooseCompany(e.target.value)}>
           <option value="All" onChange={() => chooseCompany('All')}>
-            Всі
+            {t('sort-company.all')}
           </option>
           {companyQni.map((el, i) => (
             <option key={i} value={el}>

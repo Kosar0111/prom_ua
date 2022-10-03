@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { BasketItemCount } from '../BasketItemCount/BasketItemCount'
 import './BasketItem.css'
@@ -10,6 +11,7 @@ import { deleteGood } from '../../../store/basketSlice'
 export const BasketItem: FC<IGood> = (item) => {
   const { id, price, img, title, nameShop, count } = item
   const idUser = useAppSelector((state) => state.auth.users.id)
+  const { t } = useTranslation()
 
   const dispatch = useAppDispatch()
   const deleteItem = () => {
@@ -17,7 +19,10 @@ export const BasketItem: FC<IGood> = (item) => {
   }
   return (
     <div className="basket-item__wrapper">
-      <div className="shop-name"> Продавець компания: {nameShop}</div>
+      <div className="shop-name">
+        {' '}
+        {t('basket-item.shop-name')} {nameShop}
+      </div>
       <div className="gap"></div>
       <div className="basket-item-img__wrapper">
         <img className="basket-item-img" src={img} alt="img" />

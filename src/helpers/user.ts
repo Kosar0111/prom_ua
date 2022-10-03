@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { IUser } from '../model/interfaceUser'
+
 type ActionPayload = Record<string, string>
 
 export const userRegister = (value: ActionPayload): IUser => {

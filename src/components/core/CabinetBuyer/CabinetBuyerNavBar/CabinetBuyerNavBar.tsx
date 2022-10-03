@@ -1,30 +1,32 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import './CabinetBuyerNavBar.css'
 
 export const CabinetBuyerNavBar: FC = () => {
+  const { t } = useTranslation()
   return (
     <div className="navbar-list">
       <div className="navbar-list__item">
-        <Link to="possibilitis">Можливості покупця</Link>
+        <Link to="possibilitis">{t('cabinetBuyer.possibilitis')}</Link>
       </div>
       <div className="navbar-list__item">
-        <Link to="wants">Бажане</Link>
+        <Link to="wants">{t('cabinetBuyer.wants')}</Link>
       </div>
       <div className="navbar-list__item">
-        <Link to="messages">Повідомлення</Link>
+        <Link to="messages">{t('cabinetBuyer.messages')}</Link>
       </div>
       <div className="navbar-list__item">
-        <Link to="order">Замовлення</Link>
+        <Link to="order">{t('cabinetBuyer.order')}</Link>
       </div>
       <div className="navbar-list__item">
-        <Link to="reviews">Відгуки</Link>
+        <Link to="reviews">{t('cabinetBuyer.reviews')}</Link>
       </div>
       <div className="navbar-list__item">
-        <Link to="setting">Налаштування профілю</Link>
+        <Link to="setting">{t('cabinetBuyer.setting')}</Link>
       </div>
       <div className="navbar-list__item">
-        <Link to="wallet">Мій гаманець</Link>
+        <Link to="wallet">{t('cabinetBuyer.wallet')}</Link>
       </div>
     </div>
   )

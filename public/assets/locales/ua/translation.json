@@ -20,7 +20,10 @@
     "registration__modal-name": "Вашe прізвище",
     "registration__modal-pass": "Введіть ваш пароль",
     "registration__modal-btn": "Зареєструватися",
-    "error-api": "Трапилась помилка:"
+    "error-api": "Трапилась помилка:",
+    "registration-name": "Вашe імя",
+    "registration-last-name": "Вашe прізвище",
+    "registration-password": "Введіть ваш пароль"
   },
   "login": {
     "login__modal-h1": "Увійти в кабінет",
@@ -100,5 +103,65 @@
     "paper": "Довідка та",
     "contact": "Контактна інформація",
     "content": "Захист легальності контенту"
+  },
+  "basket": {
+    "basket__header": "Кошик",
+    "basket-h3": "В кошику немає товарів",
+    "basket-h3-register": "Ви ще не зареєструвалися",
+    "basket-p": "У вас гарний смак.",
+    "basket-p1": "А у нас багато цікавих та потрібних речей.",
+    "basket-btn": "За покупками",
+    "basket-btn-register": "Назад на головну",
+    "basket-pay__order": "До оплати без доставки:",
+    "basket-pay__order-btn": "Оформити замовлення"
+  },
+  "basket-item": {
+    "shop-name": "Продавець компанія:"
+  },
+  "header-search-city": {
+    "ukraine": "Україна",
+    "kyiv": "Київ",
+    "kharkiv": "Харків",
+    "lviv": "Львів",
+    "dnepr": "Дніпро",
+    "odessa": "Одеса",
+    "search": "Я шукаю"
+  },
+  "shoes": {
+    "shoes-buy": "Купити",
+    "shoes-buy-add": "У кошику"
+  },
+  "cabinetBuyer": {
+    "possibilitis": "Можливості покупця",
+    "wants": "Бажане",
+    "messages": "Повідомлення",
+    "order": "Замовлення",
+    "reviews": "Відгуки",
+    "setting": "Налаштування профілю",
+    "wallet": "Мій гаманець"
+  },
+  "cabinetSales": {
+    "sales": "Можливості продавця",
+    "company": "Створити кабінет компанії",
+    "messages-sales": "Повідомлення від покупців",
+    "order-sales": "Замовлення",
+    "reviews-sales": "Відгуки",
+    "add-goods": "Додати товар",
+    "wallet-company": "Мій рахунок компанії"
+  },
+  "sortPrice": {
+    "highest": "Від найдорожчих",
+    "lowest": "Від найдешевших"
+  },
+  "sort-company": {
+    "company": " Компанії:",
+    "all": "Всі"
+  },
+  "sort-city": {
+    "all": " Всі міста"
+  },
+  "noty": {
+    "register": "Вы успішно зареєструвались!",
+    "auth": "Вы успішно авторизувались!"
   }
 }

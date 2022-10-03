@@ -1,6 +1,21 @@
 {
-  "users": [],
-  "order": [],
+  "users": [
+    {
+      "token": "cd377780-a7a2-448a-8889-05f0b76e2e27",
+      "id": "39e54227-eed3-4f8c-b24d-b7d9d531eea7",
+      "name": "Константин",
+      "lastName": "Локтев",
+      "email": "kasar.05@mail.ru",
+      "password": "111111",
+      "phone": "0637209239"
+    }
+  ],
+  "order": [
+    {
+      "id": "39e54227-eed3-4f8c-b24d-b7d9d531eea7",
+      "basket": []
+    }
+  ],
   "goods": [
     {
       "id": "1",
