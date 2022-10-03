@@ -18,7 +18,7 @@ const initialState: IGoodslice = {
   message: '',
   goods: []
 }
-export const getGoods = createAsyncThunk('goods/getGoods', async _ => {
+export const getGoods = createAsyncThunk('goods/getGoods', async (_) => {
   const response = await axios.get<IGood[]>('http://localhost:3001/goods')
   return response.data
 })
@@ -30,8 +30,8 @@ const goodsSlice = createSlice({
       state.goods = action.payload
     }
   },
-  extraReducers: builder => {
-    builder.addCase(getGoods.pending, state => {
+  extraReducers: (builder) => {
+    builder.addCase(getGoods.pending, (state) => {
       state.loading = true
       state.error = false
       state.view = false
@@ -43,12 +43,11 @@ const goodsSlice = createSlice({
       state.view = true
       goodsSlice.caseReducers.allGoods(state, action)
     })
-    builder.addCase(getGoods.rejected, state => {
+    builder.addCase(getGoods.rejected, (state) => {
       state.loading = false
       state.error = true
       state.view = false
-      state.message = 'Something went wrong'
-      state.goods = []
+      state.message = 'Что то пошло не так'
     })
   }
 })

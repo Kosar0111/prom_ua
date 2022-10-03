@@ -20,7 +20,10 @@
     "registration__modal-name": "Ваша фамилия",
     "registration__modal-pass": "Введите ваш пароль",
     "registration__modal-btn": "Зарегистрироваться",
-    "error-api": "Произошла ошибка:"
+    "error-api": "Произошла ошибка:",
+    "registration-name": "Вашe имя",
+    "registration-last-name": "Ваша фамилия",
+    "registration-password": "Введите ваш пароль"
   },
   "login": {
     "login__modal-h1": "Войти в кабинет",
@@ -100,5 +103,65 @@
     "paper": "Справка и",
     "contact": "Контактная информация",
     "content": "Защита легальности контента"
+  },
+  "basket": {
+    "basket__header": "Корзина",
+    "basket-h3": "В корзине нет товаров",
+    "basket-h3-register": "Вы еще не зарегистрировались",
+    "basket-p": "У вас отличный вкус.",
+    "basket-p1": "А у нас много истересных и полезных вещей.",
+    "basket-btn": "За покупками",
+    "basket-btn-register": "Назад на главную",
+    "basket-pay__order": "К опллате без доставки:",
+    "basket-pay__order-btn": "Оформить заказ"
+  },
+  "basket-item": {
+    "shop-name": "Продавець компания:"
+  },
+  "header-search-city": {
+    "ukraine": "Украина",
+    "kyiv": "Киев",
+    "kharkiv": "Харьков",
+    "lviv": "Львов",
+    "dnepr": "Днепр",
+    "odessa": "Одесса",
+    "search": "Я хочу найти"
+  },
+  "shoes": {
+    "shoes-buy": "Купить",
+    "shoes-buy-add": "В корзине"
+  },
+  "cabinetBuyer": {
+    "possibilitis": "Возможности покупателя",
+    "wants": "Желания покупателя",
+    "messages": "Сообщения",
+    "order": "Заказы",
+    "reviews": "Отзывы",
+    "setting": "Настройки профиля",
+    "wallet": "Мой кошелек"
+  },
+  "cabinetSales": {
+    "sales": "Возможности продавца",
+    "company": "Создать кабинет компании",
+    "messages-sales": "Сообщения от покупателей",
+    "order-sales": "Заказы",
+    "reviews-sales": "Отзывы",
+    "add-goods": "Добавить товар",
+    "wallet-company": "Мой счет компании"
+  },
+  "sortPrice": {
+    "highest": "От самых дорогих",
+    "lowest": "От самых дешевых"
+  },
+  "sort-company": {
+    "company": " Компании:",
+    "all": "Все"
+  },
+  "sort-city": {
+    "all": " Все города"
+  },
+  "noty": {
+    "register": "Вы успешно зарегестрировались!",
+    "auth": "Вы успешно авторизовались!"
   }
 }

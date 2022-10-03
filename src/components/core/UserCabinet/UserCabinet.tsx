@@ -12,8 +12,8 @@ import './UserCabinet.css'
 const UserCabinet: React.FC = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const user = useAppSelector(state => state.auth.users)
-  const { isAuthBool } = useAppSelector(state => state.auth)
+  const user = useAppSelector((state) => state.auth.users)
+  const { isAuthBool, register } = useAppSelector((state) => state.auth)
 
   const out = () => {
     dispatch(logOut())
@@ -34,9 +34,9 @@ const UserCabinet: React.FC = () => {
         onMouseLeave={() => setActive(!active)}
         className={active ? 'user-about-active' : 'user-about-hidden'}
       >
-        {isAuthBool && user ? (
+        {isAuthBool || register ? (
           <div className="user-about-name">
-            {user.name} {user.lastName}{' '}
+            {user.name} {user.lastName}
           </div>
         ) : (
           ''

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { FC } from 'react'
 import './Registration.css'
 import { createPortal } from 'react-dom'
 import { useFormik, FormikProps } from 'formik'
@@ -6,9 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 import '../../../../../../helpers/i18next'
 import { validationSchema } from '../../../../../../helpers/validationRegistration'
-
-import { registrUser } from '../../../../../../store/authSlice'
-
+import { registerUser } from '../../../../../../store/authSlice'
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks'
 import load from '../../../../../../assets/img/loading.gif'
 interface IRegistrationProps {
@@ -26,16 +25,13 @@ type FormModel = {
 
 const modalRegistration: any = document.getElementById('modalRegistration')
 // eslint-disable-next-line react/prop-types
-export const Registration: React.FC<IRegistrationProps> = ({
-  registrationOpen,
-  setRegistrationOpen
-}) => {
+export const Registration: FC<IRegistrationProps> = ({ registrationOpen, setRegistrationOpen }) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const { register, message, regError, loading } = useAppSelector(state => state.auth)
+  const { register, message, regError, loading } = useAppSelector((state) => state.auth)
 
   const onSubmit = (values: FormModel) => {
-    dispatch(registrUser(values))
+    dispatch(registerUser(values))
     formik.resetForm()
     register && setRegistrationOpen(!registrationOpen)
   }
@@ -56,7 +52,7 @@ export const Registration: React.FC<IRegistrationProps> = ({
     return createPortal(
       <>
         <div className="registration" onClick={() => setRegistrationOpen(!registrationOpen)}></div>
-        <div className="registration__modal" onClick={e => e.stopPropagation()}>
+        <div className="registration__modal" onClick={(e) => e.stopPropagation()}>
           <form className="registration__modal-wrapper" onSubmit={formik.handleSubmit}>
             <div
               className="registration__modal-close"
@@ -72,7 +68,7 @@ export const Registration: React.FC<IRegistrationProps> = ({
               <input
                 type="text"
                 className="registration__modal-input"
-                placeholder="Вашe імя"
+                placeholder={t('registration.registration-name')}
                 name="name"
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
@@ -85,7 +81,7 @@ export const Registration: React.FC<IRegistrationProps> = ({
               <input
                 type="text"
                 className="registration__modal-input"
-                placeholder="Вашe прізвище"
+                placeholder={t('registration.registration-last-name')}
                 name="lastName"
                 onBlur={formik.handleBlur}
                 value={formik.values.lastName}
@@ -109,7 +105,7 @@ export const Registration: React.FC<IRegistrationProps> = ({
               <input
                 type="password"
                 className="registration__modal-pass-input"
-                placeholder="Введіть ваш пароль"
+                placeholder={t('registration.registration-password')}
                 name="password"
                 onBlur={formik.handleBlur}
                 value={formik.values.password}

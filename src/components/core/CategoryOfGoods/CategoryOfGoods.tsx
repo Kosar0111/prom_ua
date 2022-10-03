@@ -1,55 +1,24 @@
-import './CategoryOfGoods.css'
-import React from 'react'
+import { FC, useEffect } from 'react'
 
-export const CategoryOfGoods: React.FC = () => {
+import './CategoryOfGoods.css'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
+import { getGoods } from '../../../store/goodsSlice'
+import { Shoes } from '../Shoes/Shoes'
+
+export const CategoryOfGoods: FC = () => {
+  const goods = useAppSelector((state) => state.goods.goods)
+
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getGoods())
+  }, [dispatch])
   return (
     <div className="goods">
-      <div className="goods__wraper">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, natus, exercitationem
-        doloremque quos quod eius necessitatibus, assumenda aliquid aliquam beatae nihil.
-        Accusantium sed excepturi delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Labore, natus, exercitationem doloremque quos quod
-        eius necessitatibus, assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi
-        delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Labore, natus, exercitationem doloremque quos quod eius necessitatibus,
-        assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi delectus dolore minima
-        dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-        natus, exercitationem doloremque quos quod eius necessitatibus, assumenda aliquid aliquam
-        beatae nihil. Accusantium sed excepturi delectus dolore minima dignissimos eaque autem!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, natus, exercitationem
-        doloremque quos quod eius necessitatibus, assumenda aliquid aliquam beatae nihil.
-        Accusantium sed excepturi delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Labore, natus, exercitationem doloremque quos quod
-        eius necessitatibus, assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi
-        delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Labore, natus, exercitationem doloremque quos quod eius necessitatibus,
-        assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi delectus dolore minima
-        dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-        natus, exercitationem doloremque quos quod eius necessitatibus, assumenda aliquid aliquam
-        beatae nihil. Accusantium sed excepturi delectus dolore minima dignissimos eaque autem!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, natus, exercitationem
-        doloremque quos quod eius necessitatibus, assumenda aliquid aliquam beatae nihil.
-        Accusantium sed excepturi delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Labore, natus, exercitationem doloremque quos quod
-        eius necessitatibus, assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi
-        delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Labore, natus, exercitationem doloremque quos quod eius necessitatibus,
-        assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi delectus dolore minima
-        dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-        natus, exercitationem doloremque quos quod eius necessitatibus, assumenda aliquid aliquam
-        beatae nihil. Accusantium sed excepturi delectus dolore minima dignissimos eaque autem!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, natus, exercitationem
-        doloremque quos quod eius necessitatibus, assumenda aliquid aliquam beatae nihil.
-        Accusantium sed excepturi delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Labore, natus, exercitationem doloremque quos quod
-        eius necessitatibus, assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi
-        delectus dolore minima dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Labore, natus, exercitationem doloremque quos quod eius necessitatibus,
-        assumenda aliquid aliquam beatae nihil. Accusantium sed excepturi delectus dolore minima
-        dignissimos eaque autem! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-        natus, exercitationem doloremque quos quod eius necessitatibus, assumenda aliquid aliquam
-        beatae nihil. Accusantium sed excepturi delectus dolore minima dignissimos eaque autem!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      <div className="goods__list">
+        {goods.map((good) => (
+          <Shoes key={good.id} {...good} />
+        ))}
       </div>
     </div>
   )

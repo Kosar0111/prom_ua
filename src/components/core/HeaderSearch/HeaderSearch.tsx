@@ -13,46 +13,52 @@ import basket from '../../../assets/img/basket.png'
 import heart from '../../../assets/img/heart.png'
 import { Basket } from '../Basket/Basket'
 
-const options = [
-  {
-    label: 'Україна',
-    value: 'urk'
-  },
-  {
-    label: 'Київ',
-    value: 'kyv'
-  },
-  {
-    label: 'Харків',
-    value: 'khr'
-  },
-  {
-    label: 'Львів',
-    value: 'lvv'
-  },
-  {
-    label: 'Дніпро',
-    value: 'dpr'
-  },
-  {
-    label: 'Одеса',
-    value: 'ods'
-  }
-]
 export const HeaderSearch = () => {
-  const { isAuthBool, register } = useAppSelector(state => state.auth)
-  const { items } = useAppSelector(state => state.basket)
-  const [basketOpen, setBasketOpen] = useState(false)
   const { t } = useTranslation()
+  const options = [
+    {
+      label: t('header-search-city.ukraine'),
+      value: 'urk'
+    },
+    {
+      label: t('header-search-city.kyiv'),
+      value: 'kyv'
+    },
+    {
+      label: t('header-search-city.kharkiv'),
+      value: 'khr'
+    },
+    {
+      label: t('header-search-city.lviv'),
+      value: 'lvv'
+    },
+    {
+      label: t('header-search-city.dnepr'),
+      value: 'dpr'
+    },
+    {
+      label: t('header-search-city.odessa'),
+      value: 'ods'
+    }
+  ]
+  const { isAuthBool, register } = useAppSelector((state) => state.auth)
+  const { items } = useAppSelector((state) => state.basket)
+  const [basketOpen, setBasketOpen] = useState(false)
+
   return (
-    <div className="search__wraper">
+    <div className="search__wrapper">
       <div className="search">
         <Link to="/" className="search__logo">
           <img src={herb} alt="logo" className="logo" />
           <span className="search__logo-span">PROM</span>
         </Link>
         <div className="search__input">
-          <input type="text" name="search" placeholder=" Я шукаю" className="input__search" />
+          <input
+            type="text"
+            name="search"
+            placeholder={t('header-search-city.search')}
+            className="input__search"
+          />
           <img src={micro} alt="voice" className="voice" />
           <button className="btn__search">{t('header-search.search__input')}</button>
         </div>
@@ -74,7 +80,7 @@ export const HeaderSearch = () => {
             className="basket"
             onClick={() => setBasketOpen(!basketOpen)}
           />
-          {(items.length && (isAuthBool || register)) > 0 ? (
+          {items.length > 0 && (isAuthBool || register) ? (
             <span className="count-basket">{items.length}</span>
           ) : (
             ''

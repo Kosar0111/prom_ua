@@ -31,7 +31,7 @@ export const Carousel: React.FC<CauroselPrors> = ({ sliders }) => {
   const startSlideTimer = () => {
     stopSlideTimer()
     slideInterval.current = setInterval(() => {
-      setCurrentSlide(currentSlide => (currentSlide < sliders.length - 1 ? currentSlide + 1 : 0))
+      setCurrentSlide((currentSlide) => (currentSlide < sliders.length - 1 ? currentSlide + 1 : 0))
     }, 3000)
   }
 
@@ -47,8 +47,8 @@ export const Carousel: React.FC<CauroselPrors> = ({ sliders }) => {
   }, [])
 
   return (
-    <div className="corusel">
-      <div className="corusel-inner" style={{ transform: `translateX(${-currentSlide * 100}%)` }}>
+    <div className="carousel">
+      <div className="carousel-inner" style={{ transform: `translateX(${-currentSlide * 100}%)` }}>
         {sliders.map((slide, index) => (
           <CarouselItem
             slide={slide}

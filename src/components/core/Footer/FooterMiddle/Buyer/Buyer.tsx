@@ -1,9 +1,11 @@
+import { FC } from 'react'
+
 import './Buyer.css'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import '../../../../../helpers/i18next'
 
-export const Buyer: React.FC = () => {
+export const Buyer: FC = () => {
   const { t } = useTranslation()
   return (
     <div>
