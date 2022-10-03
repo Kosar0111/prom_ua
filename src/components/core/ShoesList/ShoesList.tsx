@@ -1,11 +1,9 @@
 import { FC, useEffect, useState } from 'react'
 
 import { Shoes } from '../Shoes/Shoes'
-
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import { getGoods } from '../../../store/goodsSlice'
 import './ShoesList.css'
-
 import { FilterCity } from '../Filter/FilterCity/FilterCity'
 import { FilterCompany } from '../Filter/FilterCompany/FilterCompany'
 import { SortPrice } from '../Filter/SortPrice/SortPrice'
